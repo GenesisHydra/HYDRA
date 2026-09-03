@@ -1,0 +1,73 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    concurrency:
+      group: "pages-deploy"
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+      - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+      - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+      - name: Build website
+      run: |
+        cd www
+        pip install fastapi uvicorn jinja2
+        # Verificar que la app funciona
+        python -c "import main; print('App OK')"
+
+      - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
+      with:
+        #
+        # Manual Deployment Steps
+        #
+        # After the repository is set up, follow these steps to deploy:
+        #
+        # 1. Create the GitHub Pages site:
+        #    1. In the left sidebar, click Settings.
+        #    2. Click Pages in the sidebar.
+        #    3. Under "Build and deployment", select the branch `main` and the folder `/` (root).
+        #    4. Click Save.
+        #
+        # 2. Verify deployment:
+        #    Your site will be available at `https://GenesisHydra.github.io`.
+        #    If you configured a custom domain, it may take a few minutes for DNS to propagate.
+        #
+        # 3. Optionally configure a custom domain:
+        #    - In the same "Settings > Pages" section, enter your domain under "Custom domain".
+        #    - Add the appropriate DNS CNAME record as documented by GitHub.
+        
+      # Opcional: Si deseas usar un dominio personalizado, descomenta las siguientes líneas:
+      # - name: Configure custom domain
+      #   run: echo "CNAME=genesishydra.com" >> $GITHUB_ENV
+      
+      - name: Display deployment status
+      run: |
+        echo "🌐 Deployment completed!"
+        echo "📍 Site URL: https://GenesisHydra.github.io"
+        echo "📝 If using custom domain, configure it in Settings > Pages > Custom domain"
