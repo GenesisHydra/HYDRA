@@ -1,0 +1,203 @@
+{# Template: services.html - Página de Servicios #}
+{# Variables: identity, biz #}
+
+<!DOCTYPE html>
+<html lang="es" dir="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ biz.name if biz else "Servicios HYDRA" }} - Planes y Precios</title>
+    <meta name="description" content="Planes y precios de {{ biz.name if biz else 'HYDRA'}}">
+    <meta name="keywords" content="HYDRA, planes, precios, servicios automatización">
+    <meta name="author" content="HYDRA Business Automation Platform">
+    
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/img/logo-hydra.svg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #1f2937;
+            --accent: #e94a4a;
+            --light: #f9fafb;
+            --muted: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-bold text-xl tracking-wider" style="color: var(--primary);">
+                    HYDRA <span style="color: var(--accent);">Business</span>
+                </a>
+                <button class="md:hidden text-gray-700" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:flex items-center gap-8">
+                <a href="/" class="hover:text var(--accent)">Inicio</a>
+                <a href="/servicios/financial" class="hover:text var(--accent)">Finanzas</a>
+                <a href="/servicios/design" class="hover:text var(--accent)">Diseño</a>
+                <a href="/servicios/trading" class="hover:text var(--accent)">Trading</a>
+                <a href="/contacto/financial" class="hover:text var(--accent)">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tight" style="color: var(--primary);">
+                    {{ biz.name if biz else "Planes HYDRA" }}
+                </h1>
+                <p class="text-lg mt-4 text-gray-700 leading-relaxed">
+                    Soluciones de automatización para cada tipo de negocio
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Selecciona tu plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                {% set plans = [
+                    {"name": "Starter", "price": "$29/mes", "features": ["Automated reports basic", "Email support", "Email delivery", "100 contacts"],
+                     "cta": "Seleccionar"},
+                    {"name": "Professional", "price": "$49/mes", "features": ["Automated reports advanced", "Priority support", "API access", "Unlimited contacts", "Custom dashboard"],
+                     "cta": "Seleccionar"},
+                    {"name": "Enterprise", "price": "Personalizado", "features": ["Dedicated account manager", "Custom integrations", "SLA guaranteed", "White label", "On-premise option"],
+                     "cta": "Contactar"}
+                ] %}
+                
+                {% for plan in plans %}
+                <div class="p-8 rounded-xl border border-gray-200 hover:border-accent transition-colors">
+                    <div class="text-3xl md:text-4xl font-bold mb-2" style="color: var(--primary);">
+                        {{ plan.name }}
+                    </div>
+                    <p class="text-2xl mb-6" style="color: var(--accent);">{{ plan.price }}</p>
+                    <ul class="space-y-3 text-left text-gray-700 text-sm">
+                        {% for feature in plan.features %}
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mr-3 flex-shrink-0"/>
+                            <span>{{ feature }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="mt-6">
+                        <a href="/contacto/{{ business_type | lower }}" 
+                           class="w-full px-6 py-3 bg-accent text-white font-medium rounded-full hover:bg-opacity-90 transition-colors">
+                            {{ plan.cta }}
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Why HYDRA -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">¿Por qué elegir HYDRA?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-lg border border-gray-200 text-center">
+                    <div class="text-4xl md:text-5xl font-bold" style="color: var(--accent);">🚀</div>
+                    <h3 class="font-bold mb-2">Automatización Completa</h3>
+                    <p class="text-gray-700 text-sm">Desde reportes hasta pagos, todo en un solo lugar</p>
+                </div>
+                <div class="p-6 rounded-lg border border-gray-200 text-center">
+                    <div class="text-4xl md:text-5xl font-bold" style="color: var(--accent);">💰</div>
+                    <h3 class="font-bold mb-2">Ahorro de Costos</h3>
+                    <p class="text-gray-700 text-sm">Reduce gastos operativos hasta 40%</p>
+                </div>
+                <div class="p-6 rounded-lg border border-gray-200 text-center">
+                    <div class="text-4xl md:text-5xl font-bold" style="color: var(--accent);">📈</div>
+                    <h3 class="font-bold mb-2">Crecimiento Garantizado</h3>
+                    <p class="text-gray-700 text-sm">Aumente sus ingresos con decisiones basadas en datos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-12 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold mb-4">Transforma tu negocio hoy</h2>
+                <p class="text-lg mb-6">Únete a cientos de PYMES que ya automatizaron sus operaciones</h3>
+                <a href="/contacto/{{ business_type | lower }}" 
+                   class="inline-block px-8 py-4 bg-white text-primary font-medium rounded-full hover:bg-opacity-90 transition-colors">
+                    Solicitar consulta gratuita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h4 class="font-bold text-primary text-sm mb-4">HYDRA</h4>
+                    <p class="text-gray-700 text-sm">Plataforma de automatización</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Producto</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="/servicios/financial" class="hover:text var(--accent)">Finanzas</a></li>
+                        <li><a href="/servicios/design" class="hover:text var(--accent)">Diseño</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Recursos</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="/blog/financial" class="hover:text var(--accent)">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Empresa</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="/quienes-somos/financial" class="hover:text var(--accent)">Quiénes Somos</a></li>
+                        <li><a href="/terminos-y-condiciones" class="hover:text var(--accent)">Términos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Soporte</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="/contacto/financial" class="hover:text var(--accent)">Contacto</a></li>
+                        <li><a href="/politica-de-cookies" class="hover:text var(--accent)">Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Redes Sociales</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="https://linkedin.com/company/hydra-business" target="_blank" class="hover:text var(--accent)">LinkedIn</a></li>
+                        <li><a href="https://x.com/Hydra_Business" target="_blank" class="hover:text var(--accent)">X</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-200">
+                <p class="text-center text-gray-600 text-sm">© {{ now().year }} HYDRA Business Automation Platform. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('md:flex');
+        }
+    </script>
+</body>
+</html>

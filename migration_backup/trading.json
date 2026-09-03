@@ -1,0 +1,1731 @@
+{
+  "hydra_id": "trading",
+  "created_at": "2026-08-30T11:13:31.637977",
+  "strategy": {
+    "id": "strat-a0a56658",
+    "title": "Micro\u2011SaaS Financial Summary",
+    "objective": "Launch MVP within 3 months and acquire first paying client.",
+    "kpis": {
+      "monthly_revenue_eur": 0,
+      "cash_balance": 0
+    },
+    "created_at": "2026-08-30T18:41:29.449084"
+  },
+  "tactics": [
+    {
+      "id": "tac-410381",
+      "name": "Product Development",
+      "owner": "dev_team",
+      "deadline": "2026-08-30T18:41:29.449104"
+    },
+    {
+      "id": "tac-fcb427",
+      "name": "Marketing Campaign",
+      "owner": "marketing",
+      "deadline": "2026-08-30T18:41:29.449112"
+    },
+    {
+      "id": "tac-617871",
+      "name": "Sales Outreach",
+      "owner": "sales",
+      "deadline": "2026-08-30T18:41:29.449120"
+    }
+  ],
+  "daily": [],
+  "kpis": {},
+  "history": [
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:13:31.638004"
+    },
+    {
+      "step": "problems",
+      "issues": [
+        {
+          "type": "liquidity",
+          "detail": "low cash reserves"
+        }
+      ],
+      "ts": "2026-08-30T11:13:31.638014"
+    },
+    {
+      "step": "treasury_funding",
+      "amount": 10000,
+      "ts": "2026-08-30T11:13:31.638964"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:13:31.638980"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-3ff64c0b",
+      "ts": "2026-08-30T11:13:31.639102"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:13:31.639438"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:13:31.694324"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:13:31.694334"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-ca335b20",
+      "ts": "2026-08-30T11:13:31.694354"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:13:31.694383"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:13:36.710607"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:13:36.710629"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-a7bad1ac",
+      "ts": "2026-08-30T11:13:36.710666"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:13:36.710700"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:13:41.744604"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:13:41.744617"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-cf9b1d47",
+      "ts": "2026-08-30T11:13:41.744644"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:13:41.744678"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:15:16.554515"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:15:16.554533"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-04ab3ca7",
+      "ts": "2026-08-30T11:15:16.554598"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:15:16.554638"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:15:16.571370"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:15:16.571389"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-c36a124c",
+      "ts": "2026-08-30T11:15:16.571425"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:15:16.571460"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:15:21.591270"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:15:21.591286"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-2b6e4da7",
+      "ts": "2026-08-30T11:15:21.591315"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:15:21.591350"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:15:26.681279"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:15:26.681300"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-3220aa73",
+      "ts": "2026-08-30T11:15:26.681338"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:15:26.681367"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:15:31.707368"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:15:31.707389"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-c4c3dd34",
+      "ts": "2026-08-30T11:15:31.707428"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:15:31.707464"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:15:37.020069"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:15:37.020089"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-723c6929",
+      "ts": "2026-08-30T11:15:37.020127"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:15:37.020156"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:16:20.948846"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:16:20.948861"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-cba799a0",
+      "ts": "2026-08-30T11:16:20.948887"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:16:20.948919"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:16:20.980200"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:16:20.980218"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-167dc81e",
+      "ts": "2026-08-30T11:16:20.980253"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:16:20.980332"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:16:26.006602"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:16:26.006621"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-7a0fa94f",
+      "ts": "2026-08-30T11:16:26.006659"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:16:26.006694"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:16:31.278643"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:16:31.278659"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-5e93395a",
+      "ts": "2026-08-30T11:16:31.278686"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:16:31.278715"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:16:36.337948"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:16:36.337973"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-63a912f4",
+      "ts": "2026-08-30T11:16:36.338036"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:16:36.338095"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:16:41.379691"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:16:41.379712"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-bb74da81",
+      "ts": "2026-08-30T11:16:41.379751"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:16:41.379789"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:00.171033"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:00.171051"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-e278384a",
+      "ts": "2026-08-30T11:17:00.171098"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:00.171128"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:00.240668"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:00.240689"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-379a6656",
+      "ts": "2026-08-30T11:17:00.240728"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:00.240757"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:05.418507"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:05.418536"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-2903e80f",
+      "ts": "2026-08-30T11:17:05.418604"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:05.418643"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:10.669688"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:10.669707"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-b710743d",
+      "ts": "2026-08-30T11:17:10.670007"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:10.678295"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:16.047149"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:16.047171"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-abc7cb16",
+      "ts": "2026-08-30T11:17:16.047209"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:16.047238"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:20.891518"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:20.891543"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-3c8ab369",
+      "ts": "2026-08-30T11:17:20.891871"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:20.892010"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:21.353338"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:21.353362"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-ba42937c",
+      "ts": "2026-08-30T11:17:21.353404"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:21.353441"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:26.398320"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:26.398344"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-76bbbb33",
+      "ts": "2026-08-30T11:17:26.398388"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:26.398420"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:17:31.534977"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:17:31.535000"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-d69c4a14",
+      "ts": "2026-08-30T11:17:31.535041"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:17:31.535095"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:19:19.535741"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:19:19.535764"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-3b9ad39e",
+      "ts": "2026-08-30T11:19:19.535806"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:19:19.535837"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:19:19.614447"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:19:19.614470"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-a004b71f",
+      "ts": "2026-08-30T11:19:19.614511"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:19:19.614542"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:19:24.674925"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:19:24.674948"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-834daefb",
+      "ts": "2026-08-30T11:19:24.674988"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:19:24.675018"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T11:19:29.735218"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T11:19:29.735236"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-462617f3",
+      "ts": "2026-08-30T11:19:29.735272"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T11:19:29.735307"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T15:30:05.563700"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T15:30:05.563725"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-38244af2",
+      "ts": "2026-08-30T15:30:05.563780"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T15:30:05.563818"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Product Development",
+      "artifact": {
+        "type": "source_code",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_153005_347b02e4.py",
+        "state": "created",
+        "date": "2026-08-30T15:30:05.596973",
+        "responsible": "dev_team/Product Development",
+        "result": "Simple Python script generated"
+      },
+      "ts": "2026-08-30T15:30:05.596988"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Marketing Campaign",
+      "artifact": {
+        "type": "marketing_document",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_153005_d8ba49a1.md",
+        "state": "created",
+        "date": "2026-08-30T15:30:05.597192",
+        "responsible": "marketing/Marketing Campaign",
+        "result": "Marketing campaign brief generated"
+      },
+      "ts": "2026-08-30T15:30:05.597202"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Sales Outreach",
+      "artifact": {
+        "type": "sales_lead",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_153005_19dbcf2d.csv",
+        "state": "created",
+        "date": "2026-08-30T15:30:05.597385",
+        "responsible": "sales/Sales Outreach",
+        "result": "Sales lead CSV generated"
+      },
+      "ts": "2026-08-30T15:30:05.597395"
+    },
+    {
+      "step": "cycle_completed",
+      "status": "SUCCESS",
+      "artifacts_count": 3,
+      "ts": "2026-08-30T15:30:05.597403"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T15:30:05.661190"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T15:30:05.661203"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-f7b25c9b",
+      "ts": "2026-08-30T15:30:05.661231"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T15:30:05.661260"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Product Development",
+      "artifact": {
+        "type": "source_code",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_153005_3bb474ae.py",
+        "state": "created",
+        "date": "2026-08-30T15:30:05.678996",
+        "responsible": "dev_team/Product Development",
+        "result": "Simple Python script generated"
+      },
+      "ts": "2026-08-30T15:30:05.679012"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Marketing Campaign",
+      "artifact": {
+        "type": "marketing_document",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_153005_745f8967.md",
+        "state": "created",
+        "date": "2026-08-30T15:30:05.681302",
+        "responsible": "marketing/Marketing Campaign",
+        "result": "Marketing campaign brief generated"
+      },
+      "ts": "2026-08-30T15:30:05.681312"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Sales Outreach",
+      "artifact": {
+        "type": "sales_lead",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_153005_d6ad02f9.csv",
+        "state": "created",
+        "date": "2026-08-30T15:30:05.681478",
+        "responsible": "sales/Sales Outreach",
+        "result": "Sales lead CSV generated"
+      },
+      "ts": "2026-08-30T15:30:05.681486"
+    },
+    {
+      "step": "cycle_completed",
+      "status": "SUCCESS",
+      "artifacts_count": 3,
+      "ts": "2026-08-30T15:30:05.681492"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T15:30:10.792679"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T15:30:10.792700"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-f4d16b1b",
+      "ts": "2026-08-30T15:30:10.792738"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T15:30:10.792771"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Product Development",
+      "artifact": {
+        "type": "source_code",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_153010_2f776854.py",
+        "state": "created",
+        "date": "2026-08-30T15:30:10.852235",
+        "responsible": "dev_team/Product Development",
+        "result": "Simple Python script generated"
+      },
+      "ts": "2026-08-30T15:30:10.852250"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Marketing Campaign",
+      "artifact": {
+        "type": "marketing_document",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_153010_b4277d70.md",
+        "state": "created",
+        "date": "2026-08-30T15:30:10.852536",
+        "responsible": "marketing/Marketing Campaign",
+        "result": "Marketing campaign brief generated"
+      },
+      "ts": "2026-08-30T15:30:10.852547"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Sales Outreach",
+      "artifact": {
+        "type": "sales_lead",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_153010_9eb7fbad.csv",
+        "state": "created",
+        "date": "2026-08-30T15:30:10.852692",
+        "responsible": "sales/Sales Outreach",
+        "result": "Sales lead CSV generated"
+      },
+      "ts": "2026-08-30T15:30:10.852700"
+    },
+    {
+      "step": "cycle_completed",
+      "status": "SUCCESS",
+      "artifacts_count": 3,
+      "ts": "2026-08-30T15:30:10.852708"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T18:41:24.193429"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T18:41:24.193452"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-7fdb2477",
+      "ts": "2026-08-30T18:41:24.193499"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T18:41:24.193541"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Product Development",
+      "artifact": {
+        "type": "source_code",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_184124_a5f44325.py",
+        "state": "created",
+        "date": "2026-08-30T18:41:24.220562",
+        "responsible": "dev_team/Product Development",
+        "result": "Simple Python script generated"
+      },
+      "ts": "2026-08-30T18:41:24.220580"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Marketing Campaign",
+      "artifact": {
+        "type": "marketing_document",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_184124_d11d3f99.md",
+        "state": "created",
+        "date": "2026-08-30T18:41:24.220768",
+        "responsible": "marketing/Marketing Campaign",
+        "result": "Marketing campaign brief generated"
+      },
+      "ts": "2026-08-30T18:41:24.220777"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Sales Outreach",
+      "artifact": {
+        "type": "sales_lead",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_184124_f42e004f.csv",
+        "state": "created",
+        "date": "2026-08-30T18:41:24.220920",
+        "responsible": "sales/Sales Outreach",
+        "result": "Sales lead CSV generated"
+      },
+      "ts": "2026-08-30T18:41:24.220929"
+    },
+    {
+      "step": "cycle_completed",
+      "status": "SUCCESS",
+      "artifacts_count": 3,
+      "ts": "2026-08-30T18:41:24.220936"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T18:41:24.288784"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T18:41:24.288799"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-6d33bd22",
+      "ts": "2026-08-30T18:41:24.288831"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T18:41:24.288858"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Product Development",
+      "artifact": {
+        "type": "source_code",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_184124_5ad7b319.py",
+        "state": "created",
+        "date": "2026-08-30T18:41:24.317019",
+        "responsible": "dev_team/Product Development",
+        "result": "Simple Python script generated"
+      },
+      "ts": "2026-08-30T18:41:24.317032"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Marketing Campaign",
+      "artifact": {
+        "type": "marketing_document",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_184124_b4d2a6e9.md",
+        "state": "created",
+        "date": "2026-08-30T18:41:24.317200",
+        "responsible": "marketing/Marketing Campaign",
+        "result": "Marketing campaign brief generated"
+      },
+      "ts": "2026-08-30T18:41:24.317208"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Sales Outreach",
+      "artifact": {
+        "type": "sales_lead",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_184124_26cfca11.csv",
+        "state": "created",
+        "date": "2026-08-30T18:41:24.317350",
+        "responsible": "sales/Sales Outreach",
+        "result": "Sales lead CSV generated"
+      },
+      "ts": "2026-08-30T18:41:24.317357"
+    },
+    {
+      "step": "cycle_completed",
+      "status": "SUCCESS",
+      "artifacts_count": 3,
+      "ts": "2026-08-30T18:41:24.317364"
+    },
+    {
+      "step": "market_analysis",
+      "data": {
+        "trend": "growing demand for automated financial reporting",
+        "size_eur": 200000000,
+        "competitors": [
+          "CompanyA",
+          "CompanyB"
+        ]
+      },
+      "ts": "2026-08-30T18:41:29.448999"
+    },
+    {
+      "step": "opportunity",
+      "opp": {
+        "title": "Micro\u2011SaaS Financial Summary",
+        "description": "Automated concise financial reports for SMEs.",
+        "estimated_score": 8.7,
+        "required_capabilities": [
+          "Web Search",
+          "HTTP Client",
+          "Data Analysis"
+        ]
+      },
+      "ts": "2026-08-30T18:41:29.449021"
+    },
+    {
+      "step": "strategy_created",
+      "strategy_id": "strat-a0a56658",
+      "ts": "2026-08-30T18:41:29.449092"
+    },
+    {
+      "step": "tactics_created",
+      "count": 3,
+      "ts": "2026-08-30T18:41:29.449126"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Product Development",
+      "artifact": {
+        "type": "source_code",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_184129_e24b1e1e.py",
+        "state": "created",
+        "date": "2026-08-30T18:41:29.467368",
+        "responsible": "dev_team/Product Development",
+        "result": "Simple Python script generated"
+      },
+      "ts": "2026-08-30T18:41:29.467385"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Marketing Campaign",
+      "artifact": {
+        "type": "marketing_document",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_184129_a653e79d.md",
+        "state": "created",
+        "date": "2026-08-30T18:41:29.467580",
+        "responsible": "marketing/Marketing Campaign",
+        "result": "Marketing campaign brief generated"
+      },
+      "ts": "2026-08-30T18:41:29.467591"
+    },
+    {
+      "step": "task_executed",
+      "tactic": "Sales Outreach",
+      "artifact": {
+        "type": "sales_lead",
+        "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_184129_27845361.csv",
+        "state": "created",
+        "date": "2026-08-30T18:41:29.467779",
+        "responsible": "sales/Sales Outreach",
+        "result": "Sales lead CSV generated"
+      },
+      "ts": "2026-08-30T18:41:29.467789"
+    },
+    {
+      "step": "cycle_completed",
+      "status": "SUCCESS",
+      "artifacts_count": 3,
+      "ts": "2026-08-30T18:41:29.467796"
+    }
+  ],
+  "cash": 0,
+  "artifacts": [
+    {
+      "type": "source_code",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_153005_347b02e4.py",
+      "state": "created",
+      "date": "2026-08-30T15:30:05.596973",
+      "responsible": "dev_team/Product Development",
+      "result": "Simple Python script generated"
+    },
+    {
+      "type": "marketing_document",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_153005_d8ba49a1.md",
+      "state": "created",
+      "date": "2026-08-30T15:30:05.597192",
+      "responsible": "marketing/Marketing Campaign",
+      "result": "Marketing campaign brief generated"
+    },
+    {
+      "type": "sales_lead",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_153005_19dbcf2d.csv",
+      "state": "created",
+      "date": "2026-08-30T15:30:05.597385",
+      "responsible": "sales/Sales Outreach",
+      "result": "Sales lead CSV generated"
+    },
+    {
+      "type": "source_code",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_153005_3bb474ae.py",
+      "state": "created",
+      "date": "2026-08-30T15:30:05.678996",
+      "responsible": "dev_team/Product Development",
+      "result": "Simple Python script generated"
+    },
+    {
+      "type": "marketing_document",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_153005_745f8967.md",
+      "state": "created",
+      "date": "2026-08-30T15:30:05.681302",
+      "responsible": "marketing/Marketing Campaign",
+      "result": "Marketing campaign brief generated"
+    },
+    {
+      "type": "sales_lead",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_153005_d6ad02f9.csv",
+      "state": "created",
+      "date": "2026-08-30T15:30:05.681478",
+      "responsible": "sales/Sales Outreach",
+      "result": "Sales lead CSV generated"
+    },
+    {
+      "type": "source_code",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_153010_2f776854.py",
+      "state": "created",
+      "date": "2026-08-30T15:30:10.852235",
+      "responsible": "dev_team/Product Development",
+      "result": "Simple Python script generated"
+    },
+    {
+      "type": "marketing_document",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_153010_b4277d70.md",
+      "state": "created",
+      "date": "2026-08-30T15:30:10.852536",
+      "responsible": "marketing/Marketing Campaign",
+      "result": "Marketing campaign brief generated"
+    },
+    {
+      "type": "sales_lead",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_153010_9eb7fbad.csv",
+      "state": "created",
+      "date": "2026-08-30T15:30:10.852692",
+      "responsible": "sales/Sales Outreach",
+      "result": "Sales lead CSV generated"
+    },
+    {
+      "type": "source_code",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_184124_a5f44325.py",
+      "state": "created",
+      "date": "2026-08-30T18:41:24.220562",
+      "responsible": "dev_team/Product Development",
+      "result": "Simple Python script generated"
+    },
+    {
+      "type": "marketing_document",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_184124_d11d3f99.md",
+      "state": "created",
+      "date": "2026-08-30T18:41:24.220768",
+      "responsible": "marketing/Marketing Campaign",
+      "result": "Marketing campaign brief generated"
+    },
+    {
+      "type": "sales_lead",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_184124_f42e004f.csv",
+      "state": "created",
+      "date": "2026-08-30T18:41:24.220920",
+      "responsible": "sales/Sales Outreach",
+      "result": "Sales lead CSV generated"
+    },
+    {
+      "type": "source_code",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_184124_5ad7b319.py",
+      "state": "created",
+      "date": "2026-08-30T18:41:24.317019",
+      "responsible": "dev_team/Product Development",
+      "result": "Simple Python script generated"
+    },
+    {
+      "type": "marketing_document",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_184124_b4d2a6e9.md",
+      "state": "created",
+      "date": "2026-08-30T18:41:24.317200",
+      "responsible": "marketing/Marketing Campaign",
+      "result": "Marketing campaign brief generated"
+    },
+    {
+      "type": "sales_lead",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_184124_26cfca11.csv",
+      "state": "created",
+      "date": "2026-08-30T18:41:24.317350",
+      "responsible": "sales/Sales Outreach",
+      "result": "Sales lead CSV generated"
+    },
+    {
+      "type": "source_code",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/dev_team/dev_product_20260830_184129_e24b1e1e.py",
+      "state": "created",
+      "date": "2026-08-30T18:41:29.467368",
+      "responsible": "dev_team/Product Development",
+      "result": "Simple Python script generated"
+    },
+    {
+      "type": "marketing_document",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/marketing/campaign_20260830_184129_a653e79d.md",
+      "state": "created",
+      "date": "2026-08-30T18:41:29.467580",
+      "responsible": "marketing/Marketing Campaign",
+      "result": "Marketing campaign brief generated"
+    },
+    {
+      "type": "sales_lead",
+      "path": "/home/genesis/opt/genesis/HYDRA/data/assets/sales/lead_20260830_184129_27845361.csv",
+      "state": "created",
+      "date": "2026-08-30T18:41:29.467779",
+      "responsible": "sales/Sales Outreach",
+      "result": "Sales lead CSV generated"
+    }
+  ],
+  "last_cycle_status": "SUCCESS"
+}

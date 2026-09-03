@@ -1,0 +1,68 @@
+{# Cookies Policy HTML #}
+<!DOCTYPE html>
+<html lang="es" dir="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Cookies - HYDRA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>:root { --primary: #1a1a2e; --secondary: #1f2937; --accent: #e94a4a; --light: #f9fafb; --muted: #6b7280; }</style>
+</head>
+<body class="bg-white text-primary">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-bold text-2xl tracking-wider" style="color: var(--primary);">HYDRA <span style="color: var(--accent);">Business</span></a>
+                <button class="md:hidden text-gray-700" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            </div>
+            <div id="mobileMenu" class="hidden md:block">
+                <a href="/" class="ml-6 text-gray-700">Inicio</a>
+                <a href="/politica-de-privacidad" class="ml-6 text-gray-700">Privacy</a>
+                <a href="/terminos-y-condiciones" class="ml-6 text-gray-700">Terms</a>
+                <a href="/politica-de-cookies" class="ml-6 text-gray-700">Cookies</a>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-20">
+        <div class="max-w-3xl mx-auto px-6">
+            <h1 class="text-4xl font-bold text-primary mb-6">Política de Cookies</h1>
+            <div class="prose text-gray-700">
+                <h2>Última actualización: [fecha]</h2>
+                <h2>¿Qué son las cookies?</h2>
+                <p>Las cookies son pequeños archivos de texto que los sitios web colocan en su dispositivo cuando visita nuestro sitio. Ayudan al sitio a recordar información sobre su visita.</p>
+                <h2>Tipos de cookies que utilizamos</h2>
+                <h3>Cookies esenciales</h3>
+                <p>Son necesarias para que el sitio funcione correctamente. Permiten la navegación entre páginas y el acceso a áreas seguras del sitio.</p>
+                <h3>Cookies de rendimiento</h3>
+                <p>Recogen información sobre cómo los visitantes utilizan el sitio web, por ejemplo, qué páginas visita con mayor frecuencia. Estas cookies no recopilan información que identifique al visitante.</p>
+                <h3>Cookies de funcionalidad</h3>
+                <p>Permiten al sitio recordar decisiones que toma (su nombre de usuario, idioma o región) y proporcionar características mejoradas y más personales.</p>
+                <h3>Cookies de publicidad</h3>
+                <p>Estas cookies se utilizan para mostrar anuncios que sean más relevantes para usted y sus intereses.</p>
+                <h2>Control de cookies</h2>
+                <p>Puede controlar y eliminar cookies según sea deseado. Puede borrar todas las cookies que ya estén en su dispositivo y configurar la mayoría de los navegadores para que dejen de nuevas cookies.</p>
+                <h2>Cookies que utilizamos</h2>
+                <p>Utilizamos las siguientes categorías de cookies: cookies esenciales (session_id, csrftoken), cookies de rendimiento (_ga, _gid), y cookies de funcionalidad (language, theme).</p>
+                <h2>Cookies de terceros</h2>
+                <p>Podemos permitir que terceros coloquen cookies en su dispositivo para fines de análisis y publicidad, incluyendo Google Analytics y servicios de redes sociales.</p>
+                <h2>Cómo bloquear cookies</h2>
+                <p>Si bloquea todas las cookies, es posible que algunas funciones del sitio no funcionen. Para obtener más información, visite www.aboutcookies.org.</p>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-50 pt-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div><h4 class="font-bold text-primary text-sm">HYDRA</h4><p class="text-gray-700 text-sm">Plataforma de automatización</p></div>
+                <div><h4 class="font-bold text-primary text-sm">Empresa</h4><ul class="text-gray-700 text-sm"><li><a href="/terminos-y-condiciones" class="hover:text var(--accent)">Términos</a></li></ul></div>
+                <div><h4 class="font-bold text-primary text-sm">Recursos</h4><ul class="text-gray-700 text-sm"><li><a href="/politica-de-privacidad" class="hover:text var(--accent)">Privacy</a></li></ul></div>
+                <div><h4 class="font-bold text-primary text-sm">Soporte</h4><ul class="text-gray-700 text-sm"><li><a href="/contacto/financial" class="hover:text var(--accent)">Contacto</a></li></ul></div>
+                <div><h4 class="font-bold text-primary text-sm">Redes</h4><ul class="text-gray-700 text-sm"><li><a href="https://linkedin.com/company/hydra-business" target="_blank" class="hover:text var(--accent)">LinkedIn</a></li></ul></div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-200"><p class="text-center text-gray-600 text-sm">© {{ now().year }} HYDRA Business Automation Platform. Todos los derechos reservados.</p></footer>
+    <script>function toggleMenu(){const e=document.getElementById('mobileMenu');e.classList.toggle('hidden');e.classList.toggle('md:block')}</script>
+</body>
+</html>

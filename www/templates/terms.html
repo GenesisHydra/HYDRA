@@ -1,0 +1,61 @@
+{# Terms and Conditions HTML #}
+<!DOCTYPE html>
+<html lang="es" dir="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones - HYDRA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>:root { --primary: #1a1a2e; --secondary: #1f2937; --accent: #e94a4a; --light: #f9fafb; --muted: #6b7280; }</style>
+</head>
+<body class="bg-white text-primary">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-bold text-2xl tracking-wider" style="color: var(--primary);">HYDRA <span style="color: var(--accent);">Business</span></a>
+                <button class="md:hidden text-gray-700" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            </div>
+            <div id="mobileMenu" class="hidden md:block">
+                <a href="/" class="ml-6 text-gray-700">Inicio</a>
+                <a href="/terminos-y-condiciones" class="ml-6 text-gray-700">Términos</a>
+                <a href="/politica-de-privacidad" class="ml-6 text-gray-700">Privacy</a>
+                <a href="/politica-de-cookies" class="ml-6 text-gray-700">Cookies</a>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-20">
+        <div class="max-w-3xl mx-auto px-6">
+            <h1 class="text-4xl font-bold text-primary mb-6">Términos y Condiciones</h1>
+            <div class="prose text-gray-700">
+                <h2>Última actualización: [fecha]</h2>
+                <h2>Acceptación de los Términos</h2>
+                <p>Al acceder a este sitio web y utilizar los servicios de HYDRA, usted acepta quedar vinculado por estos Términos y Condiciones. No utilice el sitio si no está de acuerdo con algún parte de los mismos.</p>
+                <h2>Servicios de HYDRA</h2>
+                <p>HYDRA ofrece herramientas de automatización, gestión financiera y servicios de base de datos para pequeñas y medianas empresas. El usuario se compromete a utilizar los servicios de HYDRA de conformidad con las leyes y regulaciones aplicables.</p>
+                <h2>Registro de Cuenta</h2>
+                <p>Cuando el usuario crea una cuenta, se compromete a proporcionar información veraz, exacta y actualizada. El usuario es responsable de mantener la confidencialidad de sus credenciales de acceso.</p>
+                <h2>Propiedad Intelectual</h2>
+                <p>Todo el contenido, características y funcionalidades del sitio web de HYDRA, incluyendo texto, imágenes, gráficos, logotipos y software, son propiedad de HYDRA o sus licenciadores.</p>
+                <h2>Limitación de Responsabilidad</h2>
+                <p>En ningún caso HYDRA será responsable por daños indirectos, incidentales, especiales, consecuentes o punitivos. Estos Términos y Condiciones se regirán por las leyes de [País/Región].</p>
+                <h2>Contacto</h2>
+                <p>Para preguntas sobre estos Términos y Condiciones, contacte a: <a href="mailto:legal@hydra.business">legal@hydra.business</a></p>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-50 pt-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div><h4 class="font-bold text-primary text-sm">HYDRA</h4><p class="text-gray-700 text-sm">Plataforma de automatización</p></div>
+                <div><h4 class="font-bold text-primary text-sm">Empresa</h4><ul class="text-gray-700 text-sm"><li><a href="/terminos-y-condiciones" class="hover:text var(--accent)">Términos</a></li></ul></div>
+                <div><h4 class="font-bold text-primary text-sm">Recursos</h4><ul class="text-gray-700 text-sm"><li><a href="/politica-de-privacidad" class="hover:text var(--accent)">Privacy</a></li></ul></div>
+                <div><h4 class="font-bold text-primary text-sm">Soporte</h4><ul class="text-gray-700 text-sm"><li><a href="/contacto/financial" class="hover:text var(--accent)">Contacto</a></li></ul></div>
+                <div><h4 class="font-bold text-primary text-sm">Redes</h4><ul class="text-gray-700 text-sm"><li><a href="https://linkedin.com/company/hydra-business" target="_blank" class="hover:text var(--accent)">LinkedIn</a></li></ul></div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-200"><p class="text-center text-gray-600 text-sm">© {{ now().year }} HYDRA Business Automation Platform. Todos los derechos reservados.</p></footer>
+    <script>function toggleMenu(){const e=document.getElementById('mobileMenu');e.classList.toggle('hidden');e.classList.toggle('md:block')}</script>
+</body>
+</html>

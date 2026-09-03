@@ -1,0 +1,31 @@
+VALIDACIÓN COMPLETA - Flujo HYDRA:
+
+HYDRA: FINANCIAL
+  market_analysis trend: growing demand for automated financial reporting
+  market_analysis size_eur: 200000000
+  opportunity title: Micro-SaaS Financial Summary
+  strategy title: Micro-SaaS Financial Summary
+  tactics count: 3
+
+HYDRA: DESIGN
+  market_analysis trend: growing demand for automated design and branding solutions
+  market_analysis size_eur: 150000000
+  opportunity title: Micro-SaaS Design Portal
+  strategy title: Micro-SaaS Design Portal
+  tactics count: 3
+
+HYDRA: TRADING
+  market_analysis trend: growing demand for automated trading analytics and market insights
+  market_analysis size_eur: 180000000
+  opportunity title: Micro-SaaS Trading Analytics
+  strategy title: Micro-SaaS Trading Analytics
+  tactics count: 3
+
+=== RESULTADOS ===
+Market trends distinct: True
+Market sizes distinct: True
+Market competitors distinct: True
+Strategy titles distinct: True
+
+VEREDICTO FINAL: ✅ PASA
+Todas las HYDRAs nacen con identidades diferentes alineadas con el Documento Madre.

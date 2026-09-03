@@ -1,0 +1,23 @@
+=== SIMULACIÓN: market_analysis por HYDRA ===
+
+Financial HYDRA:
+  trend: growing demand for automated financial reporting
+  size_eur: 200000000
+  competitors: ['CompanyA', 'CompanyB']
+
+Design HYDRA:
+  trend: growing demand for automated design and branding solutions
+  size_eur: 150000000
+  competitors: ['DesignCo', 'BrandCorp']
+
+Trading HYDRA:
+  trend: growing demand for automated trading analytics and market insights
+  size_eur: 180000000
+  competitors: ['TradeAlpha', 'QuantStreet']
+
+=== RESULTADOS ===
+Trends different: True
+Sizes different: True
+Competitors different: True
+
+ÉXITO: Las tres HYDRAs ahora tienen market_analysis distintos

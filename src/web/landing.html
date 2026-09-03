@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra Financial Summary SaaS</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Automated concise financial reports for SMEs.">
+    <meta name="keywords" content="financial, SaaS, report, automation, SME">
+</head>
+<body>
+    <header>
+        <h1>Hydra Financial Summary</h1>
+        <p>Instant, AI‑powered financial summaries for your business.</p>
+    </header>
+    <main>
+        <section class="cta">
+            <h2>Get Started</h2>
+            <form id="purchaseForm" action="/purchase" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="customer_email" required>
+                <label for="amount">Plan (€ per month):</label>
+                <select id="amount" name="amount_eur">
+                    <option value="20">Starter – €20</option>
+                    <option value="50">Growth – €50</option>
+                    <option value="200">Enterprise – €200</option>
+                </select>
+                <button type="submit">Proceed to Checkout</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Hydra Ltd. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: JSON.stringify({
+                    customer_email: data.get('customer_email'),
+                    amount_eur: parseFloat(data.get('amount_eur'))
+                }),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const result = await response.json();
+            if (result.checkout_url) {
+                window.location.href = result.checkout_url;
+            } else {
+                alert('Error creating checkout');
+            }
+        });
+    </script>
+</body>
+</html>

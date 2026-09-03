@@ -1,0 +1,73 @@
+{
+  "timestamp": "2026-09-03T13:28:23.732001",
+  "period": {
+    "year": 2026,
+    "month": 9,
+    "month_name": "September",
+    "quarter": 3
+  },
+  "summary": {
+    "total_revenue": 225.0,
+    "total_expenses": 0,
+    "total_profit": 75.0,
+    "total_customers": 8,
+    "profit_margin": 33.33,
+    "average_revenue_per_customer": 28.12
+  },
+  "by_business_type": {
+    "financial": {
+      "revenue": 75.0,
+      "expenses": 0,
+      "profit": 25.0,
+      "customers": 5,
+      "count": 1,
+      "avg_revenue": 75.0,
+      "avg_customers": 5.0
+    },
+    "design": {
+      "revenue": 150.0,
+      "expenses": 0,
+      "profit": 50.0,
+      "customers": 3,
+      "count": 1,
+      "avg_revenue": 150.0,
+      "avg_customers": 3.0
+    }
+  },
+  "growth_metrics": {
+    "revenue_growth_rate": 400.0,
+    "customer_growth_rate": -55.56
+  },
+  "performance_ranking": [
+    {
+      "business_id": "test-002",
+      "business_type": "design",
+      "performance_score": 80,
+      "rank": 2,
+      "metrics": {
+        "monthly_revenue": 150.0,
+        "profit": 50.0,
+        "customer_growth": 0,
+        "profitable": true
+      }
+    },
+    {
+      "business_id": "test-001",
+      "business_type": "financial",
+      "performance_score": 70.0,
+      "rank": 1,
+      "metrics": {
+        "monthly_revenue": 75.0,
+        "profit": 25.0,
+        "customer_growth": 0,
+        "profitable": true
+      }
+    }
+  ],
+  "financial_health": {
+    "overall_score": 256.25,
+    "risk_level": "low",
+    "trends": [],
+    "alerts": []
+  }
+}
