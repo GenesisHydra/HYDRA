@@ -9,7 +9,9 @@ from fastapi import FastAPI, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
 import uvicorn
+from datetime import datetime
 
 # Configuración de la identidad de GenesisHydra
 HYDRA_IDENTITY = {
@@ -198,7 +200,8 @@ app = FastAPI(title="GenesisHydra Public Website", description="Public presence 
 app.mount("/static", StaticFiles(directory="www/static"), name="static")
 
 # Configurar templates
-templates = Jinja2Templates(directory="www/templates")
+templates = Jinja2Templates(directory="templates")
+templates.env.globals['now'] = lambda: datetime.utcnow()
 
 # Configuración de correo corporativo
 EMAIL_CONFIG = {
@@ -279,7 +282,7 @@ async def root(request: Request):
     from fastapi import Request
     return templates.TemplateResponse(
         "landing.html", 
-        {"request": request, "identity": HYDRA_IDENTITY, "business": "financial"}
+        {"identity": HYDRA_IDENTITY, "business_type": "financial", "biz": BUSINESS_DOMAINS["financial"]}
     )
 
 @app.get("/{business_type}", include_in_schema=False)
@@ -289,7 +292,7 @@ async def business_landing(request: Request, business_type: str):
         biz = BUSINESS_DOMAINS[business_type]
         return templates.TemplateResponse(
             "landing.html",
-            {"request": request, "identity": HYDRA_IDENTITY, "business": business_type, "biz": biz}
+            {"identity": HYDRA_IDENTITY, "business_type": business_type, "biz": biz}
         )
     return HTMLResponse(content="Tipo de negocio no disponible", status_code=404)
 
@@ -300,7 +303,7 @@ async def services_page(request: Request, business_type: str):
         biz = BUSINESS_DOMAINS[business_type]
         return templates.TemplateResponse(
             "services.html",
-            {"request": request, "identity": HYDRA_IDENTITY, "business": business_type, "biz": biz}
+            {"identity": HYDRA_IDENTITY, "business_type": business_type, "biz": biz}
         )
     return HTMLResponse(content="Tipo de negocio no disponible", status_code=404)
 
@@ -309,7 +312,7 @@ async def about_page(request: Request, business_type: str):
     """Página 'Quiénes Somos'"""
     return templates.TemplateResponse(
         "about.html",
-        {"request": request, "identity": HYDRA_IDENTITY, "business": business_type}
+        {"identity": HYDRA_IDENTITY, "business_type": business_type}
     )
 
 @app.get("/contacto/{business_type}", include_in_schema=False)
@@ -317,7 +320,7 @@ async def contact_page(request: Request, business_type: str):
     """Página de contacto con formulario"""
     return templates.TemplateResponse(
         "contact.html",
-        {"request": request, "identity": HYDRA_IDENTITY, "business": business_type,
+        {"identity": HYDRA_IDENTITY, "business_type": business_type,
          "corporate_emails": EMAIL_CONFIG["corporate_emails"]}
     )
 

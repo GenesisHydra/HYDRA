@@ -41,9 +41,9 @@
             </div>
             <div id="mobileMenu" class="hidden md:block">
                 <a href="/" class="ml-6 text-gray-700 hover:text var(--accent)">Inicio</a>
-                <a href="/quienes-somos/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Quiénes Somos</a>
-                <a href="/servicios/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Servicios</a>
-                <a href="/contacto/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Contacto</a>
+                <a href="/quienes-somos/{{ business_type | lower }}" class="ml-6 text-gray-700 hover:text var(--accent)">Quiénes Somos</a>
+                <a href="/servicios/{{ business_type | lower }}" class="ml-6 text-gray-700 hover:text var(--accent)">Servicios</a>
+                <a href="/contacto/{{ business_type | lower }}" class="ml-6 text-gray-700 hover:text var(--accent)">Contacto</a>
             </div>
         </div>
     </nav>
