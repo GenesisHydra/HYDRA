@@ -1,0 +1,369 @@
+"""
+HYDRA Mail Module
+Handles Gmail API integration for sending and receiving emails.
+"""
+
+import os
+import base64
+import time
+import tempfile
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
+
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+# Import HYDRA Vault
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+from hydra.vault import get_vault
+
+# If modifying these scopes, delete the google/token secret from the vault.
+SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
+CODE_PATH = '/tmp/gmail_auth_code.txt'
+
+def get_gmail_service():
+    """Authenticate and return Gmail service object using HYDRA Vault."""
+    vault = get_vault()
+    creds = None
+    
+    # Load existing token from vault if available
+    token_json = vault.get_secret('google/token')
+    if token_json is not None:
+        try:
+            creds = Credentials.from_authorized_user_info(info=token_json, scopes=SCOPES)
+            # If expired but refresh token exists, refresh
+            if creds and creds.expired and creds.refresh_token:
+                print("Token expired, refreshing...")
+                creds.refresh(Request())
+                # Save refreshed token back to vault
+                vault.set_secret('google/token', creds.to_json())
+                print("Token refreshed and saved to vault.")
+        except Exception as e:
+            print(f"Error loading token from vault: {e}")
+            creds = None
+    
+    # If no valid credentials, let user log in.
+    if not creds or not creds.valid:
+        # Retrieve client secret from vault
+        client_secret_json = vault.get_secret('google/client_secret')
+        if client_secret_json is None:
+            raise FileNotFoundError(
+                "Google client secret not found in vault. "
+                "Please add the client secret to the vault under the key 'google/client_secret'."
+            )
+        print("No valid token found. Initiating OAuth2 flow.")
+        # Write the client secret to a temporary file for the flow
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            f.write(client_secret_json)
+            client_secret_path = f.name
+        
+        try:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                client_secret_path, SCOPES)
+            # Use out-of-band (oob) flow to get authorization code manually
+            flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
+            auth_url, _ = flow.authorization_url(
+                access_type='offline',
+                prompt='consent',
+                include_granted_scopes=True)
+            print('='*60)
+            print('Please visit the following URL to authorize this application:')
+            print(auth_url)
+            print('='*60)
+            print('After granting access, you will receive an authorization code.')
+            print(f'Please write the code to {CODE_PATH}')
+            print('Waiting for the code...')
+            # Wait for the code file to appear
+            start = time.time()
+            while time.time() - start < 300:  # 5 minutes timeout
+                if os.path.exists(CODE_PATH):
+                    try:
+                        with open(CODE_PATH, 'r') as f:
+                            code = f.read().strip()
+                        os.remove(CODE_PATH)
+                        if code:
+                            break
+                    except Exception:
+                        pass
+                time.sleep(2)
+                print('Still waiting for authorization code...')
+            else:
+                raise TimeoutError('Timeout waiting for authorization code.')
+            try:
+                creds = flow.fetch_token(code=code)
+            except Exception as e:
+                print(f'Error fetching token: {e}')
+                raise
+            # Save credentials for next run in the vault
+            vault.set_secret('google/token', creds.to_json())
+            print('Token saved successfully to vault.')
+        finally:
+            # Clean up the temporary file
+            os.unlink(client_secret_path)
+    
+    try:
+        service = build('gmail', 'v1', credentials=creds)
+        return service
+    except HttpError as error:
+        print(f'An error occurred: {error}')
+        return None
+
+# The rest of the functions remain unchanged as they depend on the service object.
+def send_message(to, subject, body, cc=None, bcc=None):
+    """Send an email message.
+    
+    Args:
+        to: Recipient email address (string or list)
+        subject: Email subject
+        body: Email body (plain text)
+        cc: CC recipients (optional)
+        bcc: BCC recipients (optional)
+    
+    Returns:
+        Sent message object or None if error
+    """
+    service = get_gmail_service()
+    if not service:
+        return None
+    
+    try:
+        message = MIMEMultipart()
+        message['to'] = ', '.join(to) if isinstance(to, list) else to
+        message['subject'] = subject
+        if cc:
+            message['cc'] = ', '.join(cc) if isinstance(cc, list) else cc
+        if bcc:
+            message['bcc'] = ', '.join(bcc) if isinstance(bcc, list) else bcc
+        
+        message.attach(MIMEText(body, 'plain'))
+        
+        raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
+        body = {'raw': raw_message}
+        
+        sent_message = service.users().messages().send(
+            userId='me', body=body).execute()
+        print(f'Message sent. Message ID: {sent_message["id"]}')
+        return sent_message
+    except HttpError as error:
+        print(f'An error occurred while sending message: {error}')
+        return None
+
+def list_messages(max_results=10, query=''):
+    """List messages from the user's mailbox.
+    
+    Args:
+        max_results: Maximum number of messages to return
+        query: Search query (same format as Gmail search)
+    
+    Returns:
+        List of message dictionaries
+    """
+    service = get_gmail_service()
+    if not service:
+        return []
+    
+    try:
+        results = service.users().messages().list(
+            userId='me', maxResults=max_results, q=query).execute()
+        messages = results.get('messages', [])
+        return messages
+    except HttpError as error:
+        print(f'An error occurred while listing messages: {error}')
+        return []
+
+def get_message(message_id):
+    """Get a specific message by ID.
+    
+    Args:
+        message_id: ID of the message to retrieve
+    
+    Returns:
+        Message dictionary or None if error
+    """
+    service = get_gmail_service()
+    if not service:
+        return None
+    
+    try:
+        message = service.users().messages().get(
+            userId='me', id=message_id, format='full').execute()
+        return message
+    except HttpError as error:
+        print(f'An error occurred while getting message: {error}')
+        return None
+
+def create_label(label_name):
+    """Create a new label in the user's mailbox.
+    
+    Args:
+        label_name: Name of the label to create
+    
+    Returns:
+        Created label object or None if error
+    """
+    service = get_gmail_service()
+    if not service:
+        return None
+    
+    try:
+        label_object = {
+            'name': label_name,
+            'labelListVisibility': 'labelShow',
+            'messageListVisibility': 'show'
+        }
+        label = service.users().labels().create(
+            userId='me', body=label_object).execute()
+        print(f'Label created: {label["name"]} (ID: {label["id"]})')
+        return label
+    except HttpError as error:
+        print(f'An error occurred while creating label: {error}')
+        return None
+
+def add_label_to_message(message_id, label_id):
+    """Add a label to a specific message.
+    
+    Args:
+        message_id: ID of the message
+        label_id: ID of the label to add
+    
+    Returns:
+        Modified message object or None if error
+    """
+    service = get_gmail_service()
+    if not service:
+        return None
+    
+    try:
+        message = service.users().messages().modify(
+            userId='me', id=message_id,
+            body={'addLabelIds': [label_id]}).execute()
+        print(f'Label added to message {message_id}')
+        return message
+    except HttpError as error:
+        print(f'An error occurred while adding label: {error}')
+        return None
+
+def search_messages(query, max_results=10):
+    """Search for messages matching a query.
+    
+    Args:
+        query: Search query (same format as Gmail search)
+        max_results: Maximum number of results to return
+    
+    Returns:
+        List of message dictionaries
+    """
+    return list_messages(max_results=max_results, query=query)
+
+def get_message_plain_text(message):
+    """Extract plain text body from a message object.
+    
+    Args:
+        message: Message object as returned by get_message()
+    
+    Returns:
+        Plain text body as string, or empty string if not found
+    """
+    if not message:
+        return ''
+    
+    payload = message.get('payload', {})
+    parts = payload.get('parts', [])
+    
+    if not parts:
+        # Simple message without parts
+        body = payload.get('body', {}).get('data', '')
+        if body:
+            return base64.urlsafe_b64decode(body).decode('utf-8')
+        return ''
+    
+    # Look for text/plain part
+    for part in parts:
+        mime_type = part.get('mimeType')
+        if mime_type == 'text/plain':
+            data = part.get('body', {}).get('data', '')
+            if data:
+                return base64.urlsafe_b64decode(data).decode('utf-8')
+        # If nested parts, recurse (simplified: only one level)
+        elif 'parts' in part:
+            for subpart in part['parts']:
+                if subpart.get('mimeType') == 'text/plain':
+                    data = subpart.get('body', {}).get('data', '')
+                    if data:
+                        return base64.urlsafe_b64decode(data).decode('utf-8')
+    
+    return ''
+
+# Example usage and test function
+def test_gmail_integration():
+    """Run a series of tests to verify Gmail integration works."""
+    print("=== HYDRA Mail Integration Test ===")
+    
+    # Test 1: Authenticate and get service
+    print("\n1. Authenticating with Gmail API...")
+    service = get_gmail_service()
+    if service:
+        print("   ✓ Authentication successful")
+    else:
+        print("   ✗ Authentication failed")
+        return False
+    
+    # Test 2: List recent messages
+    print("\n2. Listing recent messages...")
+    messages = list_messages(max_results=5)
+    print(f"   ✓ Found {len(messages)} recent messages")
+    
+    # Test 3: Create a test label
+    print("\n3. Creating test label 'HYDRA_Test'...")
+    label = create_label('HYDRA_Test')
+    if label:
+        label_id = label.get('id')
+        print(f"   ✓ Label created with ID: {label_id}")
+    else:
+        print("   ✗ Failed to create label")
+        # Continue anyway
+    
+    # Test 4: Send a test email to ourselves
+    print("\n4. Sending test email...")
+    test_subject = "HYDRA Mail Test - " + str(os.getpid())
+    test_body = f"This is a test email sent at {os.popen('date').read().strip()}\n\nHYDRA Mail integration is working!"
+    sent = send_message(to='contact.genesishydra@gmail.com', 
+                       subject=test_subject, 
+                       body=test_body)
+    if sent:
+        sent_id = sent.get('id')
+        print(f"   ✓ Test email sent. Message ID: {sent_id}")
+        
+        # Test 5: Search for the sent email
+        print("\n5. Searching for sent email...")
+        search_query = f'subject:"{test_subject}"'
+        found_messages = search_messages(search_query, max_results=1)
+        if found_messages:
+            print(f"   ✓ Found {len(found_messages)} matching message(s)")
+            # Test 6: Retrieve the message
+            msg_id = found_messages[0]['id']
+            message = get_message(msg_id)
+            if message:
+                body_text = get_message_plain_text(message)
+                if test_body in body_text:
+                    print("   ✓ Message content verified")
+                else:
+                    print("   ⚠ Message content mismatch")
+            else:
+                print("   ✗ Failed to retrieve message")
+        else:
+            print("   ✗ Test email not found in search")
+    else:
+        print("   ✗ Failed to send test email")
+    
+    print("\n=== Test Complete ===")
+    return True
+
+if __name__ == '__main__':
+    test_gmail_integration()

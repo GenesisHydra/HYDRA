@@ -1,0 +1,3 @@
+config/credentials/
+token.json
+config/vault/
