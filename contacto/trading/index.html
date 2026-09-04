@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html>
+<html lang="es" dir="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - HYDRA</title>
+    <meta name="description" content="Contacto con HYDRA Business Automation Platform">
+    <meta author="HYDRA Business Automation Platform">
+    
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/img/logo-hydra.svg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #1f2937;
+            --accent: #e94a4a;
+            --light: #f9fafb;
+            --muted: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-bold text-xl tracking-wider" style="color: var(--primary);">
+                    HYDRA <span style="color: var(--accent);">Business</span>
+                </a>
+                <button class="md:hidden text-gray-700" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:block">
+                <a href="/" class="ml-6 text-gray-700 hover:text var(--accent)">Inicio</a>
+                <a href="/quienes-somos/trading" class="ml-6 text-gray-700 hover:text var(--accent)">Quiénes Somos</a>
+                <a href="/servicios/trading" class="ml-6 text-gray-700 hover:text var(--accent)">Servicios</a>
+                <a href="/contacto/trading" class="ml-6 text-gray-700 hover:text var(--accent)">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold tracking-tight" style="color: var(--primary);">
+                    Contacto
+                </h1>
+                <p class="text-lg mt-4 text-gray-700 leading-relaxed">
+                    Estamos aquí para ayudarte
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <!-- Contact Form -->
+            <div class="bg-white rounded-2xl p-8 shadow-md mb-12">
+                <h2 class="text-3xl font-bold text-primary mb-6">Enviar un mensaje</h2>
+                <form class="space-y-6" id="contactForm">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
+                        <input type="text" name="name" required 
+                               class="shadow appearance-none border-2 border-gray-300 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-accent/25"
+                               placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" name="email" required
+                               class="shadow appearance-none border-2 border-gray-300 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-accent/25"
+                               placeholder="tu@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Asunto</label>
+                        <input type="text" name="subject"
+                               class="shadow appearance-none border-2 border-gray-300 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-accent/25"
+                               placeholder="Asunto de tu mensaje">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Mensaje</label>
+                        <textarea name="message" rows="6"
+                                  class="shadow appearance-none border-2 border-gray-300 rounded w-full py-3 px-4 text-gray-700 leading-tall focus:outline-none focus:ring-2 focus:ring-accent/25 resizewidth
+focus:outline-none resize-none"
+                                  placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" name="consent" id="consent"
+                               class="shadow-native appearance-none rounded-w-3 w-5 h-5 border-2 border-gray-300 bg-gray-50 focus:ring-2 focus:ring-primary/25 cursor-pointer"/>
+                        <span class="ml-3 text-sm text-gray-600">
+                            Acepto recibir comunicación de HYDRA
+                        </span>
+                    </div>
+                    
+                    <button type="submit"
+                            class="w-full py-3 bg-accent text-white font-medium rounded-full hover:bg-opacity-90 transition-colors">
+                        Enviar mensaje
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div>
+                    <h4 class="font-bold text-primary text-sm mb-4">Dirección</h4>
+                    <p class="text-gray-700 text-sm">Remoto - Equipo Global</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm mb-4">Email</h4>
+                    <ul class="text-gray-700 text-sm space-y-2">
+                        <li><a href="mailto:hello@hydra.business" class="hover:text var(--accent)">hello@hydra.business</a></li>
+                        <li><a href="mailto:contact@hydra.business" class="hover:text var(--accent)">contact@hydra.business</a></li>
+                        <li><a href="mailto:support@hydra.business" class="hover:text var(--accent)">support@hydra.business</a></li>
+                        <li><a href="mailto:billing@hydra.business" class="hover:text var(--accent)">billing@hydra.business</a></li>
+                        <li><a href="mailto:legal@hydra.business" class="hover:text var(--accent)">legal@hydra.business</a></li>
+                        <li><a href="mailto:noreply@hydra.business" class="hover:text var(--accent)">noreply@hydra.business</a></li>
+                        <li><a href="mailto:newsletter@hydra.business" class="hover:text var(--accent)">newsletter@hydra.business</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm mb-4">Redes Sociales</h4>
+                    <div class="flex gap-3">
+                        <a href="https://linkedin.com/company/hydra-business" target="_blank"
+                           class="flex items-center px-4 py-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                            <i class="fab fa-linkedin-in text-primary mr-2"></i>LinkedIn
+                        </a>
+                        <i href="https://x.com/Hydra_Business" target="_blank"
+                           class="flex items-center px-4 py-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                            <i class="fab fa-x-twitter text-primary mr-2"></i>X
+                        </i>
+                        <a href="https://instagram.com/hydra.business" target="_blank"
+                           class="flex items-center px-4 py-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                            <i class="fab fa-instagram text-primary mr-2"></i>Instagram
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm mb-4">Horario</h4>
+                    <p class="text-gray-700 text-sm">Lunes - Viernes: 9:00 - 18:00 UTC</p>
+                    <p class="text-gray-700 text-xs">Respuesta en un plazo de 24 horas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 hidden items-center justify-center bg-black/50 backdrop-blur">
+        <div class="bg-white rounded-2xl p-8 max-w-sm text-center">
+            <i class="fas fa-check-circle text-5xl text-accent mb-4 flex justify-center items-center"/>
+            <h3 class="text-2xl font-bold mb-4">Mensaje enviado</h3>
+            <p class="text-gray-700 text-sm mb-4">Tu mensaje ha sido enviado exitosamente. Te responderemos en un plazo de 24 horas.</p>
+            <button id="closeModal"
+                    class="px-6 py-3 bg-accent text-white font-medium rounded-full hover:bg-opacity-90 transition-colors">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.consent) {
+                alert('Por favor acepta los términos de comunicación');
+                return;
+            }
+            
+            // Show success state
+            document.getElementById('contactForm')?.classList.add('hidden');
+            document.getElementById('successModal')?.classList.remove('hidden');
+        });
+        
+        document.getElementById('closeModal')?.addEventListener('click', () => {
+            document.getElementById('successModal')?.classList.add('hidden');
+            document.getElementById('contactForm')?.classList.remove('hidden');
+        });
+        
+        // Close modal on outside click
+        document.getElementById('successModal')?.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('successModal')) {
+                document.getElementById('successModal')?.classList.add('hidden');
+                document.getElementById('contactForm')?.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

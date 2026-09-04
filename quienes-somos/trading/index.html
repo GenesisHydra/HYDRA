@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html>
+<html lang="es" dir="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - HYDRA</title>
+    <meta name="description" content="Conoce la historia y misión de HYDRA Business Automation Platform">
+    <meta name="author" content="HYDRA Business Automation Platform">
+    
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/img/logo-hydra.svg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #1f2937;
+            --accent: #e94a4a;
+            --light: #f9fafb;
+            --muted: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-bold text-2xl tracking-wider" style="color: var(--primary);">
+                    HYDRA <span style="color: var(--accent);">Business</span>
+                </a>
+                <button class="md:hidden text-gray-700" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:block">
+                <a href="/" class="ml-6 text-gray-700 hover:text var(--accent)">Inicio</a>
+                <a href="/quienes-somos/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Quiénes Somos</a>
+                <a href="/servicios/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Servicios</a>
+                <a href="/contacto/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold tracking-tight" style="color: var(--primary);">
+                    Quiénes Somos
+                </h1>
+                <p class="text-lg mt-4 text-gray-700 leading-relaxed">
+                    Conoce la historia y misión de HYDRA
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-primary mb-4">Nuestra Misión</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        Transformar las PYMES de simulaciones a empresas reales con automatización inteligente. HYDRA pone en manos de emprendedores y contadores herramientas poderosas para gestionar tesorería, pagos y operaciones sin necesidad de conocimientos técnicos avanzados.
+                    </p>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-primary text-right mb-4">Nuestra Visión</h2>
+                    <p class="text-gray-700 leading-relaxed text-right">
+                        Ser la plataforma estándar global para la automatización de negocios PYMES, empoderando a un millón de empresas para que operen con eficiencia y claridad financiera.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Equipo HYDRA</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-lg border border-gray-200 text-center">
+                    <div class="text-4xl md:text-5xl font-bold" style="color: var(--accent);">🛠️</div>
+                    <h3 class="font-bold mb-2">Desarrollo</h3>
+                    <p class="text-gray-700 text-sm">Equipo de ingeniería de software</p>
+                </div>
+                <div class="p-6 rounded-lg border border-gray-200 text-center">
+                    <div class="text-4xl md:text-5xl font-bold" style="color: var(--accent);">📊</div>
+                    <h3 class="font-bold mb-2">Finanzas</h3>
+                    <p class="text-gray-700 text-sm">Equipo de treasury y accounting</p>
+                </div>
+                <div class="p-6 rounded-lg border border-gray-200 text-center">
+                    <div class="text-4xl md:text-5xl font-bold" style="color: var(--accent);">🤖</div>
+                    <h3 class="font-bold mb-2">Automatización</h3>
+                    <p class="text-gray-700 text-sm">Equipo de IA y machine learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-gradient-to-b from-[var(--primary)] to-[var(--secondary)] text-white pt-12 pb-12 rounded-t-2xl">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-4">Nuestra Historia</h2>
+                    <p class="text-lg text-white/80 leading-relaxed">
+                        HYDRA nace de la necesidad de transformar las PYMES de operaciones basadas en hojas de cálculo y simulaciones a empresas gestionadas con datos reales y automatización inteligente. En 2026, identificamos que el 90% de las pequeñas empresas operan con datos obsoletos y procesos manuales que limitan su crecimiento.
+                    </p>
+                    <p class="text-lg text-white/80 leading-relaxed">
+                        Nuestro objetivo es cambiar esa realidad proporcionando herramientas de automatización accesibles, poderosas y fáciles de implementar. Hoy, HYDRA ya ayuda a cientos de PYMES en múltiples países a tomar decisiones financieras basadas en datos en tiempo real.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-primary/10 border border-primary rounded-lg p-8 text-center">
+                <h3 class="text-2xl font-bold text-primary mb-4">¿Listo para transformar tu negocio?</h3>
+                <p class="text-gray-700 mb-6">¿Tienes preguntas sobre cómo HYDRA puede ayudar a tu empresa? Estamos aquí para ayudarte.</p>
+                <div class="space-y-3">
+                    <a href="/contacto/financial" 
+                       class="inline-block px-6 py-3 bg-accent text-white font-medium rounded-full hover:bg-opacity-90 transition-colors">
+                        Contactar a Ventas
+                    </a>
+                    <a href="mailto:hello@hydra.business"
+                       class="inline-block px-6 py-3 border-2 border-accent text-accent font-medium rounded-full hover:bg-accent/10 transition-colors">
+                        Hola@hydra.business
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div>
+                    <h4 class="font-bold text-primary text-sm mb-4">HYDRA</h4>
+                    <p class="text-gray-700 text-sm">Plataforma de automatización</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Empresa</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="/quienes-somos/financial" class="hover:text var(--accent)">Quiénes Somos</a></li>
+                        <li><a href="/terminos-y-condiciones" class="hover:text var(--accent)">Términos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Recursos</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="/servicios/financial" class="hover:text var(--accent)">Servicios</a></li>
+                        <li><a href="/politica-de-privacidad" class="hover:text var(--accent)">Privacy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Soporte</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="/contacto/financial" class="hover:text var(--accent)">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Redes</h4>
+                    <ul class="text-gray-700 text-sm">
+                        <li><a href="https://linkedin.com/company/hydra-business" target="_blank" class="hover:text var(--accent)">LinkedIn</a></li>
+                        <li><a href="https://x.com/Hydra_Business" target="_blank" class="hover:text var(--accent)">X</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-200">
+                <p class="text-center text-gray-600 text-sm">© 2026 HYDRA Business Automation Platform. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('md:block');
+        }
+    </script>
+</body>
+</html>
