@@ -5,8 +5,6 @@ Handles Gmail API integration for sending and receiving emails.
 
 import os
 import base64
-import time
-import tempfile
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
@@ -25,18 +23,17 @@ from hydra.vault import get_vault
 
 # If modifying these scopes, delete the google/token secret from the vault.
 SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
-CODE_PATH = '/tmp/gmail_auth_code.txt'
 
 def get_gmail_service():
-    """Authenticate and return Gmail service object using HYDRA Vault."""
+    """Authenticate and return Gmail service object."""
     vault = get_vault()
     creds = None
     
     # Load existing token from vault if available
     token_json = vault.get_secret('google/token')
-    if token_json is not None:
+    if token_json:
         try:
-            creds = Credentials.from_authorized_user_info(info=token_json, scopes=SCOPES)
+            creds = Credentials.from_authorized_user_info(token_json, SCOPES)
             # If expired but refresh token exists, refresh
             if creds and creds.expired and creds.refresh_token:
                 print("Token expired, refreshing...")
@@ -50,62 +47,36 @@ def get_gmail_service():
     
     # If no valid credentials, let user log in.
     if not creds or not creds.valid:
-        # Retrieve client secret from vault
-        client_secret_json = vault.get_secret('google/client_secret')
-        if client_secret_json is None:
-            raise FileNotFoundError(
-                "Google client secret not found in vault. "
-                "Please add the client secret to the vault under the key 'google/client_secret'."
-            )
         print("No valid token found. Initiating OAuth2 flow.")
-        # Write the client secret to a temporary file for the flow
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
-            f.write(client_secret_json)
-            client_secret_path = f.name
-        
+        # Load client secret from file (could also be from vault)
+        creds_path = 'config/credentials/client_secret.json'
+        if not os.path.exists(creds_path):
+            raise FileNotFoundError(
+                f"Client secrets file not found at {creds_path}. "
+                "Please download OAuth 2.0 credentials from Google Cloud Console."
+            )
+        flow = InstalledAppFlow.from_client_secrets_file(
+            creds_path, SCOPES)
+        # Generate authorization URL
+        auth_url, _ = flow.authorization_url(
+            prompt='consent',
+            access_type='offline',
+            include_granted_scopes=True)
+        print('='*60)
+        print('Please visit the following URL to authorize this application:')
+        print(auth_url)
+        print('='*60)
+        print('After granting access, you will receive an authorization code.')
+        code = input('Enter the authorization code: ').strip()
         try:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                client_secret_path, SCOPES)
-            # Use out-of-band (oob) flow to get authorization code manually
-            flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
-            auth_url, _ = flow.authorization_url(
-                access_type='offline',
-                prompt='consent',
-                include_granted_scopes=True)
-            print('='*60)
-            print('Please visit the following URL to authorize this application:')
-            print(auth_url)
-            print('='*60)
-            print('After granting access, you will receive an authorization code.')
-            print(f'Please write the code to {CODE_PATH}')
-            print('Waiting for the code...')
-            # Wait for the code file to appear
-            start = time.time()
-            while time.time() - start < 300:  # 5 minutes timeout
-                if os.path.exists(CODE_PATH):
-                    try:
-                        with open(CODE_PATH, 'r') as f:
-                            code = f.read().strip()
-                        os.remove(CODE_PATH)
-                        if code:
-                            break
-                    except Exception:
-                        pass
-                time.sleep(2)
-                print('Still waiting for authorization code...')
-            else:
-                raise TimeoutError('Timeout waiting for authorization code.')
-            try:
-                creds = flow.fetch_token(code=code)
-            except Exception as e:
-                print(f'Error fetching token: {e}')
-                raise
-            # Save credentials for next run in the vault
-            vault.set_secret('google/token', creds.to_json())
-            print('Token saved successfully to vault.')
-        finally:
-            # Clean up the temporary file
-            os.unlink(client_secret_path)
+            flow.fetch_token(code=code)
+        except Exception as e:
+            print(f'Error fetching token: {e}')
+            raise
+        creds = flow.credentials
+        # Save credentials to vault for next run
+        vault.set_secret('google/token', creds.to_json())
+        print('Authentication successful. Token saved to vault.')
     
     try:
         service = build('gmail', 'v1', credentials=creds)
@@ -114,7 +85,6 @@ def get_gmail_service():
         print(f'An error occurred: {error}')
         return None
 
-# The rest of the functions remain unchanged as they depend on the service object.
 def send_message(to, subject, body, cc=None, bcc=None):
     """Send an email message.
     
