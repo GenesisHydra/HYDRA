@@ -1,24 +1,31 @@
 Resumen (máximo 10 líneas):
-Se corrigió la versión de starlette en requirements.txt para compatibilidad con FastAPI 0.141.1.
-Se generó el sitio estático en _site usando render_static.py.
-Se creó y empujó la rama gh-pages con el contenido del sitio estático y archivo .nojekyll.
-Se verificó que la rama gh-pages existe en el remoto y contiene index.html.
-Se empujó un commit vacío a gh-pages para intentar desencadenar una reconstrucción.
-El sitio aún no está disponible (404), probablemente porque GitHub Pages no está configurado para publicar desde la rama gh-pages.
+Se implementó el módulo HYDRA Mail para integrar Gmail API mediante OAuth 2.0 oficial.
+Se eliminó la implementación duplicada y obsoleta (auth_gmail.py).
+Se utiliza flujo de autorización con authorization_url y fetch_token, sin localhost.
+Las credenciales se almacenan de forma segura en el Vault de HYDRA (token solo).
+Se agregó el módulo src/hydra/mail/gmail_client.py con funciones de envío, lectura, etiquetas y búsqueda.
+Se actualizó requirements.txt con las dependencias necesarias de Google API.
+Se creó __init__.py para el paquete mail.
+Se guardó el resumen en SUMMARY.md.
 Archivos modificados:
-- requirements.txt (línea: starlette>=0.46.0,<0.47.0)
+- src/hydra/mail/gmail_client.py (reescrito)
+- src/hydra/mail/auth_gmail.py (eliminado)
+- src/hydra/mail/__init__.py (creado)
+- SUMMARY.md (creado/actualizado)
 Rutas exactas:
-- /home/genesis/opt/genesis/HYDRA/requirements.txt
+- /home/genesis/opt/genesis/HYDRA/src/hydra/mail/gmail_client.py
+- /home/genesis/opt/genesis/HYDRA/src/hydra/mail/auth_gmail.py (eliminado)
+- /home/genesis/opt/genesis/HYDRA/src/hydra/mail/__init__.py
+- /home/genesis/opt/genesis/HYDRA/SUMMARY.md
 Commits realizados:
-- main: 96c8438 Fix starlette version for compatibility with FastAPI 0.141.1
-- gh-pages: f7d1c0a Add static site for GitHub Pages
-- gh-pages: 5d678bf Trigger rebuild
+- gh-pages: cd1c2e1 Implement Gmail API OAuth2 flow usando authorization_url + fetch_token, eliminar auth_gmail.py duplicado, añadir módulo HYDRA Mail con Vault
 Qué queda pendiente:
-- Configurar GitHub Pages en el repositorio para usar la rama gh-pages como fuente.
+- Probar la integración manualmente ingresando el código de autorización cuando se solicite.
+- Después de la autenticación, ejecutar pruebas de envío y lectura de correo.
 ¿Necesita intervención humana?:
-Sí. El usuario debe ir a Configuración > Páginas del repositorio y seleccionar la rama gh-pages como fuente de publicación.
+Sí. Se requiere que el usuario visite la URL de autorización, conceda permisos y proporcione el código de autorización para completar el flujo OAuth y guardar el token en el Vault.
 Evidencias reales obtenidas:
-- La rama gh-pages contiene el sitio estático (verificado con ls y git show).
-- El archivo requirements.txt ya tiene la versión corregida de starlette.
-- El workflow de GitHub Actions está configurado para construir y desplegar el sitio al empujar a main.
+- El módulo gmail_client.py se compila sin errores y genera la URL de autorización correctamente.
+- El vault ya contiene el client_secret (configurado previamente).
+- El flujo elimina código duplicado y utiliza solo una instancia de InstalledAppFlow.
 Resumen guardado en: /home/genesis/opt/genesis/HYDRA/SUMMARY.md
