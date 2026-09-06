@@ -1,0 +1,347 @@
+nohup: ignoring input
+INFO:     Started server process [219233]
+INFO:     Waiting for application startup.
+
+   ██╗     ██╗████████╗███████╗██╗     ██╗     ███╗   ███╗
+   ██║     ██║╚══██╔══╝██╔════╝██║     ██║     ████╗ ████║
+   ██║     ██║   ██║   █████╗  ██║     ██║     ██╔████╔██║
+   ██║     ██║   ██║   ██╔══╝  ██║     ██║     ██║╚██╔╝██║
+   ███████╗██║   ██║   ███████╗███████╗███████╗██║ ╚═╝ ██║
+   ╚══════╝╚═╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚═╝     ╚═╝
+
+[92m20:41:51 - LiteLLM:WARNING[0m: utils.py:2907 - register_model: model=8fca836078d9303526443a50a9a0a537189cccb3c45300bd1366bd5384b0fc8a not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+[92m20:41:51 - LiteLLM:WARNING[0m: utils.py:2907 - register_model: model=openrouter/free not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+[92m20:41:51 - LiteLLM:WARNING[0m: utils.py:2907 - register_model: model=997cb97210a11829b533bb41e9daf4fbfb4f82667049cf9b7a3674f9ebb70efd not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+[92m20:41:51 - LiteLLM:WARNING[0m: utils.py:2907 - register_model: model=9c75d6452b8f2431fb93cbc382879be4fa89fd1a0682682a06d647e0cb2f5e80 not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+[92m20:41:51 - LiteLLM:WARNING[0m: utils.py:2907 - register_model: model=8746d43012b21da68fc573cbf013e1322baf06a6fc07f3018db65d9cebd7014e not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+[92m20:41:51 - LiteLLM:WARNING[0m: utils.py:2907 - register_model: model=89b29a0e661f4dc6b8378d441ddfb21502a4b097d58517389a70a7481d198264 not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:4000 (Press CTRL+C to quit)
+[92m20:53:12 - LiteLLM Proxy:ERROR[0m: common_request_processing.py:1382 - litellm.proxy.proxy_server._handle_llm_api_exception(): Exception occured - 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/response_api_endpoints/endpoints.py", line 340, in responses_api
+    response: Final = await processor.base_process_llm_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2150, in base_process_llm_request
+    return await open_sse_before_first_byte(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 1087, in open_sse_before_first_byte
+    return await produce_response
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2270, in _process_llm_request
+    llm_call: Final = await route_request(
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 434, in route_request
+    return await _route_request_single_attempt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 714, in _route_request_single_attempt
+    raise ProxyModelNotFoundError(
+litellm.proxy.route_llm_request.ProxyModelNotFoundError: 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+
+[1;37m#------------------------------------------------------------#[0m
+[1;37m#                                                            #[0m
+[1;37m#           'It would help me if you could add...'            #[0m
+[1;37m#        https://github.com/BerriAI/litellm/issues/new        #[0m
+[1;37m#                                                            #[0m
+[1;37m#------------------------------------------------------------#[0m
+
+ Thank you for using LiteLLM! - Krrish & Ishaan
+
+
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+
+
+[32mLiteLLM: Proxy initialized with Config, Set models:[0m
+[32m    free-coder[0m
+[32m    gpt-6-astra[0m
+[32m    gpt-4o[0m
+[32m    gpt-4[0m
+[32m    gpt-3.5-turbo[0m
+INFO:     127.0.0.1:40940 - "POST /v1/responses HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:44198 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41372 - "POST /v1/responses HTTP/1.1" 200 OK
+[92m09:16:17 - LiteLLM Proxy:ERROR[0m: common_request_processing.py:1382 - litellm.proxy.proxy_server._handle_llm_api_exception(): Exception occured - 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/response_api_endpoints/endpoints.py", line 340, in responses_api
+    response: Final = await processor.base_process_llm_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2150, in base_process_llm_request
+    return await open_sse_before_first_byte(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 1087, in open_sse_before_first_byte
+    return await produce_response
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2270, in _process_llm_request
+    llm_call: Final = await route_request(
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 434, in route_request
+    return await _route_request_single_attempt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 714, in _route_request_single_attempt
+    raise ProxyModelNotFoundError(
+litellm.proxy.route_llm_request.ProxyModelNotFoundError: 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+INFO:     127.0.0.1:50834 - "POST /v1/responses HTTP/1.1" 400 Bad Request
+[92m09:25:06 - LiteLLM Proxy:ERROR[0m: common_request_processing.py:1382 - litellm.proxy.proxy_server._handle_llm_api_exception(): Exception occured - 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/response_api_endpoints/endpoints.py", line 340, in responses_api
+    response: Final = await processor.base_process_llm_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2150, in base_process_llm_request
+    return await open_sse_before_first_byte(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 1087, in open_sse_before_first_byte
+    return await produce_response
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2270, in _process_llm_request
+    llm_call: Final = await route_request(
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 434, in route_request
+    return await _route_request_single_attempt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 714, in _route_request_single_attempt
+    raise ProxyModelNotFoundError(
+litellm.proxy.route_llm_request.ProxyModelNotFoundError: 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+INFO:     127.0.0.1:60808 - "POST /v1/responses HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:35116 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49842 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55328 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55328 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52918 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52918 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52918 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52918 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52918 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49390 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48502 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43180 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43180 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43180 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43180 - "POST /v1/responses HTTP/1.1" 200 OK
+[92m10:09:41 - LiteLLM Proxy:ERROR[0m: common_request_processing.py:1382 - litellm.proxy.proxy_server._handle_llm_api_exception(): Exception occured - 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/response_api_endpoints/endpoints.py", line 340, in responses_api
+    response: Final = await processor.base_process_llm_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2150, in base_process_llm_request
+    return await open_sse_before_first_byte(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 1087, in open_sse_before_first_byte
+    return await produce_response
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2270, in _process_llm_request
+    llm_call: Final = await route_request(
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 434, in route_request
+    return await _route_request_single_attempt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 714, in _route_request_single_attempt
+    raise ProxyModelNotFoundError(
+litellm.proxy.route_llm_request.ProxyModelNotFoundError: 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+INFO:     127.0.0.1:35752 - "POST /v1/responses HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:53482 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39614 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46214 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53124 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43886 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44220 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34660 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43982 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38050 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44900 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38260 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33688 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35380 - "POST /v1/responses HTTP/1.1" 200 OK
+[92m10:20:17 - LiteLLM Proxy:ERROR[0m: common_request_processing.py:1382 - litellm.proxy.proxy_server._handle_llm_api_exception(): Exception occured - 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/response_api_endpoints/endpoints.py", line 340, in responses_api
+    response: Final = await processor.base_process_llm_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2150, in base_process_llm_request
+    return await open_sse_before_first_byte(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 1087, in open_sse_before_first_byte
+    return await produce_response
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2270, in _process_llm_request
+    llm_call: Final = await route_request(
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 434, in route_request
+    return await _route_request_single_attempt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 714, in _route_request_single_attempt
+    raise ProxyModelNotFoundError(
+litellm.proxy.route_llm_request.ProxyModelNotFoundError: 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+INFO:     127.0.0.1:51422 - "POST /v1/responses HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:33150 - "POST /v1/responses HTTP/1.1" 200 OK
+[92m10:31:32 - LiteLLM Proxy:ERROR[0m: common_request_processing.py:1382 - litellm.proxy.proxy_server._handle_llm_api_exception(): Exception occured - 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/response_api_endpoints/endpoints.py", line 340, in responses_api
+    response: Final = await processor.base_process_llm_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2150, in base_process_llm_request
+    return await open_sse_before_first_byte(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 1087, in open_sse_before_first_byte
+    return await produce_response
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2270, in _process_llm_request
+    llm_call: Final = await route_request(
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 434, in route_request
+    return await _route_request_single_attempt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 714, in _route_request_single_attempt
+    raise ProxyModelNotFoundError(
+litellm.proxy.route_llm_request.ProxyModelNotFoundError: 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+INFO:     127.0.0.1:58462 - "POST /v1/responses HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:46480 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47090 - "POST /v1/responses HTTP/1.1" 200 OK
+[92m11:01:39 - LiteLLM Proxy:ERROR[0m: common_request_processing.py:1382 - litellm.proxy.proxy_server._handle_llm_api_exception(): Exception occured - 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/response_api_endpoints/endpoints.py", line 340, in responses_api
+    response: Final = await processor.base_process_llm_request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2150, in base_process_llm_request
+    return await open_sse_before_first_byte(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 1087, in open_sse_before_first_byte
+    return await produce_response
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/common_request_processing.py", line 2270, in _process_llm_request
+    llm_call: Final = await route_request(
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 434, in route_request
+    return await _route_request_single_attempt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/route_llm_request.py", line 714, in _route_request_single_attempt
+    raise ProxyModelNotFoundError(
+litellm.proxy.route_llm_request.ProxyModelNotFoundError: 400: {'error': '/responses: Invalid model name passed in model=gpt-5.4-nano. Call `/v1/models` to view available models for your key.'}
+INFO:     127.0.0.1:56668 - "POST /v1/responses HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:37192 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37192 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37192 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37192 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37192 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37192 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37192 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+[92m12:53:41 - LiteLLM Router:ERROR[0m: router.py:2762 - Responses streaming fallback also failed: litellm.MidStreamFallbackError: litellm.APIError: stream closed with reason: error. Received Model Group=gpt-6-astra
+Available Model Group Fallbacks=None Original exception: APIError: litellm.APIError: stream closed with reason: error
+[92m12:53:41 - LiteLLM Proxy:ERROR[0m: proxy_server.py:8423 - litellm.proxy.proxy_server.async_data_generator(): Exception occured - litellm.APIError: stream closed with reason: error
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/router.py", line 2740, in stream_with_fallbacks
+    fallback_response = await self.async_function_with_fallbacks_common_utils(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/router.py", line 6552, in async_function_with_fallbacks_common_utils
+    raise original_exception
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/router.py", line 2701, in stream_with_fallbacks
+    async for item in source_iterator:
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/responses/streaming_iterator.py", line 815, in __anext__
+    raise e
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/responses/streaming_iterator.py", line 788, in __anext__
+    self._maybe_raise_for_error_event(result)
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/responses/streaming_iterator.py", line 498, in _maybe_raise_for_error_event
+    raise MidStreamFallbackError(
+litellm.exceptions.MidStreamFallbackError: litellm.MidStreamFallbackError: litellm.APIError: stream closed with reason: error. Received Model Group=gpt-6-astra
+Available Model Group Fallbacks=None Original exception: APIError: litellm.APIError: stream closed with reason: error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/proxy_server.py", line 8292, in async_data_generator
+    async for item in stream_source:
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/proxy_server.py", line 8048, in _iter_with_keepalive
+    item = await aiter.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/utils.py", line 3060, in async_post_call_streaming_iterator_hook
+    async for chunk in current_response:
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/utils.py", line 1943, in _wrap_streaming_iterator_with_enrichment
+    async for chunk in gen:
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/proxy/hooks/responses_id_security.py", line 267, in async_post_call_streaming_iterator_hook
+    async for chunk in response:
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/router.py", line 2667, in __anext__
+    chunk: Final = await self._async_generator.__anext__()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/genesis/.local/lib/python3.12/site-packages/litellm/router.py", line 2767, in stream_with_fallbacks
+    raise fallback_error.original_exception from fallback_error
+litellm.exceptions.APIError: litellm.APIError: stream closed with reason: error
+[92m12:53:41 - LiteLLM Proxy:WARNING[0m: common_request_processing.py:2716 - Container ownership recording skipped on streaming /v1/responses: no completed_response on stream iterator FallbackResponsesStreamWrapper. If this stream created any tool container (e.g. code_interpreter), follow-up /v1/containers/<id>/files calls will 403 for non-admin keys.
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56610 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43154 - "POST /v1/responses HTTP/1.1" 200 OK

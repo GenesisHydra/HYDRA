@@ -1,0 +1,561 @@
+"""
+Bootstrap script for HYDRA Mail Gmail OAuth2 authorization.
+Run this ONCE to obtain and store the refresh token in the HYDRA Vault,
+and optionally synchronize it with the VPS Vault via SSH.
+
+This script uses Google's Installed App flow with PKCE and a local
+loopback redirect URI (http://127.0.0.1:PORT). This is the officially
+supported flow for desktop/browserless clients that need to obtain
+refresh tokens for Gmail and other Google APIs in 2026.
+
+Features:
+- Auto-detects Python command (works with `python` or `py` on Windows).
+- Reads VPS SSH configuration from config/vps.json (or Vault key 'vps/ssh')
+  if available; otherwise prompts the operator once and saves it.
+- Attempts automatic SSH synchronization of the refresh token to the VPS.
+- Provides diagnostic mode: `bootstrap_gmail.py --diagnostic`.
+- Outputs a clear final summary upon success.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import sys
+import time
+import base64 as b64
+import hashlib
+import subprocess
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import webbrowser
+from urllib.parse import urlparse, parse_qs
+
+# Ensure the project root is on the path regardless of how the script is invoked
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+from hydra.vault import get_vault
+from hydra.google.auth import GoogleAuth
+
+SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
+
+# ------------------------------------------------------------------
+# Configuration helpers
+# ------------------------------------------------------------------
+CONFIG_DIR = os.path.join(PROJECT_ROOT, 'config')
+VPS_CONFIG_PATH = os.path.join(CONFIG_DIR, 'vps.json')
+VPS_VAULT_KEY = 'vps/ssh'  # Optional: store SSH config in Vault as JSON
+
+
+def _ensure_config_dir():
+    os.makedirs(CONFIG_DIR, exist_ok=True)
+
+
+def _load_vps_config() -> dict | None:
+    """Load VPS SSH config from config/vps.json or Vault.
+    Returns dict with keys: host, user, key_file (optional) or None."""
+    # 1) Try config/vps.json
+    if os.path.isfile(VPS_CONFIG_PATH):
+        try:
+            with open(VPS_CONFIG_PATH, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                if isinstance(data, dict) and data.get('host') and data.get('user'):
+                    return data
+        except Exception:
+            pass
+    # 2) Try Vault key 'vps/ssh'
+    try:
+        vault = get_vault()
+        raw = vault.get_secret(VPS_VAULT_KEY)
+        if raw:
+            if isinstance(raw, str):
+                data = json.loads(raw)
+            else:
+                data = raw
+            if isinstance(data, dict) and data.get('host') and data.get('user'):
+                return data
+    except Exception:
+        pass
+    return None
+
+
+def _save_vps_config(config: dict):
+    """Save VPS SSH config to config/vps.json (and optionally Vault)."""
+    _ensure_config_dir()
+    try:
+        with open(VPS_CONFIG_PATH, 'w', encoding='utf-8') as f:
+            json.dump(config, f, indent=2)
+        # Also store in Vault for backup/redundancy
+        try:
+            vault = get_vault()
+            vault.set_secret(VPS_VAULT_KEY, json.dumps(config))
+        except Exception:
+            pass  # Vault storage is optional
+    except Exception as e:
+        print(f"⚠ Warning: could not save VPS config: {e}")
+
+
+def _prompt_vps_config() -> dict:
+    """Prompt the operator for VPS SSH connection details."""
+    print("\n🔧 Configuración de conexión SSH al VPS")
+    print("   (se guardará en config/vps.json para futuras ejecuciones)")
+    host = input("  Hostname o IP del VPS: ").strip()
+    while not host:
+        host = input("  Hostname o IP es requerido: ").strip()
+    user = input("  Usuario SSH: ").strip()
+    while not user:
+        user = input("  Usuario SSH es requerido: ").strip()
+    key_file = input("  Ruta al archivo de clave SSH privada (opcional, dejar vacío para usar contraseña): ").strip()
+    if not key_file:
+        key_file = None
+    elif not os.path.isfile(key_file):
+        print(f"   ⚠ Archivo no encontrado: {key_file}. Se intentará sin clave (usará contraseña).")
+        key_file = None
+    config = {"host": host, "user": user, "key_file": key_file}
+    _save_vps_config(config)
+    return config
+def _load_client_secret():
+    vault = get_vault()
+    raw = vault.get_secret('google/client_secret')
+    if not raw:
+        raise RuntimeError(
+            "Google client secret not found in vault under 'google/client_secret'. "
+            "Ensure it has been loaded before running bootstrap."
+        )
+    if isinstance(raw, str):
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError as e:
+            raise RuntimeError(f"Invalid client_secret JSON: {e}") from e
+    else:
+        data = raw
+    if "installed" not in data and "web" not in data:
+        raise RuntimeError("client_secret must contain 'installed' or 'web' section")
+    return data
+
+
+# ------------------------------------------------------------------
+# 2️⃣  Generador PKCE (RFC 7636) – idéntico en Windows/Linux/macOS
+# ------------------------------------------------------------------
+def _generate_code_verifier(length=32):
+    return b64.urlsafe_b64encode(os.urandom(length)).rstrip(b'=').decode()
+
+
+def _generate_code_challenge(verifier):
+    return b64.urlsafe_b64encode(
+        hashlib.sha256(verifier.encode()).digest()
+    ).rstrip(b'=').decode()
+
+
+# ------------------------------------------------------------------
+# 3️⃣  Ejecutar el flujo InstalledApp + loopback (idéntico en todos OS)
+# ------------------------------------------------------------------
+def _run_flow(scopes):
+    client_secret = _load_client_secret()
+
+    # --- fichero temporal del client secret (necesario por la librería) ---
+    tmp_dir = os.getenv('TEMP', os.path.join(PROJECT_ROOT, 'tmp'))
+    os.makedirs(tmp_dir, exist_ok=True)
+    client_path = os.path.join(tmp_dir, 'hydra_client_secret.json')
+    with open(client_path, 'w', encoding='utf-8') as f:
+        json.dump(client_secret, f)
+
+    try:
+        from google_auth_oauthlib.flow import InstalledAppFlow
+        flow = InstalledAppFlow.from_client_secrets_file(client_path, scopes)
+
+        # Generar un puerto disponible y lanzar un HTTPServer mínimo.
+        server_port = 0  # SO asigna un puerto libre
+        captured_code = {"value": None}
+
+        class _Handler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                if self.path.startswith("/?code="):
+                    code = self.path.split("=")[1].split("&")[0]
+                    captured_code["value"] = code
+                    self.send_response(200)
+                    self.send_header("Content-type", "text/html")
+                    self.end_headers()
+                    self.wfile.write(b"Authorization successful - you may close this tab.")
+                else:
+                    self.send_response(200)
+                    self.end_headers()
+                    self.wfile.write(b"")
+
+                def log_message(self, format, *args):
+                    pass
+
+            def handle_one_request(self):
+                self.raw_requestline = self.rfile.readline(65537)
+                if not self.raw_requestline:
+                    self.close_connection = True
+                    return
+                if hasattr(self, 'command'):
+                    self.raw_requestline = self.raw_requestline.rstrip("\r\n")
+                else:
+                    self.parse_request()
+                mname = 'do_' + self.command
+                if not hasattr(self, mname):
+                    mname = 'do_GET'
+                    self.command = 'GET'
+                method = getattr(self, mname)
+                method()
+                self.wfile.flush()
+
+        httpd = HTTPServer(("127.0.0.1", server_port), _Handler)
+        port = httpd.server_address[1]   # Puerto real asignado
+        redirect_uri = f"http://127.0.0.1:{port}"
+        flow.redirect_uri = redirect_uri
+
+        # Mostrar la URL y esperar autorización manual (sin webbrowser.open)
+        auth_url, _ = flow.authorization_url(
+            prompt="consent",
+            access_type="offline",
+            include_granted_scopes=True,
+        )
+        print("\n" + "="*60)
+        print("Por favor, autoriza el acceso a tu cuenta de Google:")
+        print(repr(auth_url))   # for verification
+        print("="*60 + "\n")
+        print(auth_url)
+        print(f"Longitud de la URL: {len(auth_url)} caracteres")
+        try:
+            import tkinter as tk
+            root = tk.Tk()
+            root.withdraw()
+            root.clipboard_clear()
+            root.clipboard_append(auth_url)
+            root.update()
+            root.destroy()
+            print("✅ URL copiada al portapapeles.")
+        except Exception as e:
+            print(f"⚠ No se pudo copiar al portapapeles automáticamente: {e}")
+        print()
+        print("Esperando respuesta en http://127.0.0.1:{}/ ...".format(port))
+        print("(Si no se abre automáticamente, copia la URL arriba en tu navegador)")
+        print("Después de conceder permiso, serás redirigido a una URL local.")
+        print("Puedes esperar unos segundos o pegar aquí el código de autorización o la URL completa de redirección.\n")
+        sys.stdout.flush()
+
+        # Esperar por el código vía callback o entrada manual con timeout
+        import time
+        timeout_seconds = 30
+        start_time = time.time()
+        while captured_code["value"] is None:
+            # Manejar una petición con timeout corto para permitir verificar el tiempo transcurrido
+            httpd.handle_request()  # bloquea hasta que llega una petición
+            if time.time() - start_time > timeout_seconds:
+                print("\nTimeout esperando callback automático.")
+                break
+
+        if captured_code["value"] is not None:
+            auth_code = captured_code["value"]
+            print("Código recibido vía callback local.")
+        else:
+            # Preguntar al usuario por el código o la URL de redirección
+            while True:
+                user_input = input("Pega el código de autorización o la URL completa de redirección (ej. http://127.0.0.1:{}/?code=XXXX): ".format(port)).strip()
+                if not user_input:
+                    continue
+                # Extraer el código de la URL si se proporciona una URL completa
+                if "?code=" in user_input:
+                    # Extraer el valor del parámetro code
+                    import urllib.parse
+                    parsed = urllib.parse.urlparse(user_input)
+                    query = urllib.parse.parse_qs(parsed.query)
+                    if 'code' in query and query['code']:
+                        auth_code = query['code'][0]
+                        break
+                    else:
+                        print("No se encontró el parámetro 'code' en la URL. Inténtalo de nuevo.")
+                else:
+                    # Asumir que el usuario pegó solo el código
+                    auth_code = user_input
+                    break
+
+        # Intercambiar código por tokens
+        flow.fetch_token(code=auth_code)
+        creds = flow.credentials
+        return creds
+    finally:
+        try:
+            os.unlink(client_path)
+        except OSError:
+            pass
+SSH_AVAILABLE = False
+def _test_ssh_connection(host, user, key_filename=None):
+    """Try to test SSH connectivity. Returns (success, error_msg)."""
+    global SSH_AVAILABLE
+    try:
+        import paramiko
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(hostname=host, username=user, timeout=10, pkey=None if key_filename is None else None)
+        ssh.close()
+        SSH_AVAILABLE = True
+        return True, ""
+    except ImportError:
+        SSH_AVAILABLE = False
+        return False, "paramiko not installed"
+    except Exception as e:
+        SSH_AVAILABLE = False
+        return False, str(e)
+
+
+def _ssh_upload_token(vault_host, vault_user, token_json, key_filename=None):
+    """Upload token JSON to the remote Vault via SSH.
+
+    Returns (success, message)."""
+    global SSH_AVAILABLE
+    # Try paramiko first
+    try:
+        import paramiko
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        if key_filename and os.path.isfile(key_file):
+            pkey = paramiko.RSAKey.from_private_key_file(key_filename)
+            ssh.connect(hostname=vault_host, username=vault_user, pkey=pkey, timeout=15)
+        else:
+            ssh.connect(hostname=vault_host, username=vault_user, timeout=15)
+        # Upload the token file
+        sftp = ssh.open_sftp()
+        remote_vault_dir = "/home/genesis/.config/hydra/vault"
+        try:
+            sftp.chdir(remote_vault_dir)
+        except IOError:
+            sftp.mkdir(remote_vault_dir)
+            sftp.chdir(remote_vault_dir)
+        remote_path = os.path.join(remote_vault_dir, "secrets.enc")
+        # Write token JSON to a temp file and upload
+        local_tmp = os.path.join(os.getenv('TEMP', '/tmp'), 'hydra_token_upload.json')
+        with open(local_tmp, 'w', encoding='utf-8') as f:
+            f.write(token_json)
+        sftp.put(local_tmp, remote_path)
+        sftp.close()
+        ssh.close()
+        return True, "Token uploaded via paramiko SSH"
+    except ImportError:
+        SSH_AVAILABLE = False
+        pass  # fall back to subprocess
+    except Exception as e:
+        return False, f"SSH upload error (paramiko): {e}"
+
+    # Fallback: use native ssh command (Windows 10+ OpenSSH or Linux/macOS ssh)
+    try:
+        # Build ssh command
+        ssh_cmd = ["ssh", "-o", "StrictHostKeyChecking=no",
+                   "-o", "UserKnownHostsFile=/dev/null"]
+        if key_filename and os.path.isfile(key_filename):
+            ssh_cmd.extend(["-i", key_filename])
+        ssh_cmd.append(f"{vault_user}@{vault_host}")
+        # We'll send the token JSON via stdin to a remote command that writes it
+        remote_cmd = f"mkdir -p /home/genesis/.config/hydra/vault && cat > /home/genesis/.config/hydra/vault/secrets.enc"
+        full_cmd = ssh_cmd + [remote_cmd]
+        result = subprocess.run(
+            full_cmd,
+            input=token_json,
+            capture_output=True,
+            text=True,
+            timeout=20
+        )
+        if result.returncode == 0:
+            return True, "Token uploaded via native SSH"
+        else:
+            return False, f"SSH command failed: {result.stderr.strip()}"
+    except FileNotFoundError:
+        return False, "SSH command not found (install OpenSSH Client on Windows or ensure ssh is in PATH)"
+    except Exception as e:
+        return False, f"SSH upload error: {e}"
+
+
+# ------------------------------------------------------------------
+# 5️⃣  Modo diagnóstico
+# ------------------------------------------------------------------
+def _run_diagnostic():
+    """Run diagnostic checks and report results."""
+    print("🔍 Modo diagnóstico de HYDRA Gmail Bootstrap")
+    print("=" * 60)
+    # 1. Python version
+    print(f"1️⃣  Python: {sys.version.split()[0]} ({sys.executable})")
+    # 2. Dependencies
+    deps_ok = True
+    import google.oauth2   # ensure google.oauth2 is loaded
+    try:
+        import google_auth_oauthlib
+        print("2️⃣  google-auth-oauthlib: ✓")
+    except ImportError as e:
+        print(f"2️⃣  google-auth-oauthlib: ✗ (no instalado) {e}")
+        deps_ok = False
+    try:
+        import googleapiclient
+        print("   google-api-python-client: ✓")
+    except ImportError:
+        print("   google-api-python-client: ✗ (no instalado)")
+        deps_ok = False
+    try:
+        import paramiko
+        print("   paramiko: ✓")
+    except ImportError:
+        print("   paramiko: ⚠ (opcional, se usará ssh nativo si está disponible)")
+    # 3. Client secret
+    try:
+        vault = get_vault()
+        cs = vault.get_secret('google/client_secret')
+        if cs:
+            print("3️⃣  Client secret: ✓ presente en Vault")
+        else:
+            print("3️⃣  Client secret: ✗ no encontrado en Vault")
+            deps_ok = False
+    except Exception as e:
+        print(f"3️⃣  Client secret: ✗ error al leer Vault: {e}")
+        deps_ok = False
+    # 4. Token (may be absent)
+    try:
+        token = vault.get_secret('google/token')
+        if token:
+            print("4️⃣  Refresh token: ✓ presente en Vault")
+        else:
+            print("4️⃣  Refresh token: ⚠ no presente (se obtendrá tras bootstrap)")
+    except Exception as e:
+        print(f"4️⃣  Refresh token: ⚠ error al leer: {e}")
+    # 5. VPS SSH config
+    vps_cfg = _load_vps_config()
+    if vps_cfg:
+        print(f"5️⃣  Config SSH VPS: ✓ host={vps_cfg['host']} user={vps_cfg['user']}")
+        if vps_cfg.get('key_file'):
+            kf = vps_cfg['key_file']
+            if os.path.isfile(kf):
+                print(f"      Clave SSH: ✓ {kf}")
+            else:
+                print(f"      Clave SSH: ⚠ archivo no encontrado: {kf}")
+        else:
+            print("      Clave SSH: ⚠ no se especificó (se usará contraseña)")
+        # Test SSH connectivity
+        ok, msg = _test_ssh_connection(vps_cfg['host'], vps_cfg['user'], vps_cfg.get('key_file'))
+        if ok:
+            print("   Prueba SSH: ✓ conexión exitosa")
+        else:
+            print(f"   Prueba SSH: ⚠ {msg}")
+    else:
+        print("5️⃣  Config SSH VPS: ⚠ no configurada (se pedirá al ejecutar bootstrap)")
+    # 6. OAuth scopes
+    print(f"6️⃣  Scopes solicitados: {', '.join(SCOPES)}")
+    print("\n🔧 Diagnóstico completado.")
+    if deps_ok:
+        print("   Todas las dependencias críticas están instaladas.")
+    else:
+        print("   Falta alguna dependencia crítica; instálala antes de continuar.")
+    return deps_ok
+
+
+def main():
+    print("🔐 Iniciando HYDRA Gmail Bootstrap...", flush=True)
+    import argparse
+# ------------------------------------------------------------------
+# 6️⃣  Punto de entrada principal
+# ------------------------------------------------------------------
+    parser = argparse.ArgumentParser(
+        description="HYDRA Gmail OAuth2 Bootstrap (Windows/Linux/macOS)"
+    )
+    parser.add_argument(
+        "--diagnostic",
+        action="store_true",
+        help="Ejecuta solo diagnóstico y sale"
+    )
+    parser.add_argument(
+        "--vps-host",
+        help="Hostname or IP del VPS (sobrescribe config)"
+    )
+    parser.add_argument(
+        "--vps-user",
+        help="Usuario SSH para el VPS (sobrescribe config)"
+    )
+    parser.add_argument(
+        "--ssh-key",
+        help="Ruta al archivo de clave SSH privada (sobrescribe config)"
+    )
+    args = parser.parse_args()
+
+    if args.diagnostic:
+        ok = _run_diagnostic()
+        sys.exit(0 if ok else 1)
+
+    print("🔐 Iniciando flujo OAuth de Google (se requiere autorización manual)...")
+    try:
+        creds = _run_flow(SCOPES)
+    except Exception as e:
+        print(f"\n❌ Error durante el flujo OAuth: {e}")
+        sys.exit(1)
+
+    token_json = creds.to_json()
+    print("\n💾 Guardando token en el Vault LOCAL...")
+    vault = get_vault()
+    if vault.set_secret("google/token", token_json):
+        print("✅ Token guardado en el Vault LOCAL.")
+    else:
+        print("❌ No fue posible guardar el token en el Vault LOCAL.")
+        sys.exit(1)
+
+    # Verify token can be read back
+    retrieved = vault.get_secret("google/token")
+    if not retrieved:
+        print("❌ Error crítico: no se pudo recuperar el token del Vault LOCAL.")
+        sys.exit(1)
+    print("✅ Verificación: el token puede recuperarse desde el Vault LOCAL.")
+
+    # Attempt VPS sync if config exists
+    vps_cfg = _load_vps_config()
+    sync_attempted = False
+    sync_success = False
+    sync_message = ""
+    if vps_cfg:
+        sync_attempted = True
+        host = args.vps_host or vps_cfg.get('host')
+        user = args.vps_user or vps_cfg.get('user')
+        key_file = args.ssh_key or vps_cfg.get('key_file')
+        if not host or not user:
+            print("⚠ Configuración SSH incompleta; se omitirá la sincronización automática.")
+        else:
+            print(f"\n🔗 Intentando sincronización automática con VPS {host}...")
+            success, msg = _ssh_upload_token(host, user, token_json, key_file)
+            sync_success = success
+            sync_message = msg
+            if success:
+                print(f"✅ Sincronización automática exitosa: {msg}")
+            else:
+                print(f"⚠ No fue posible la sincronización automática: {msg}")
+    else:
+        print("\n⚠ No se encontró configuración SSH VPS; se omite la sincronización automática.")
+
+    # If sync was attempted and failed, offer guided single command
+    if sync_attempted and not sync_success:
+        print("\n--- Modo de un solo comando para sincronización manual ---")
+        print("En el VPS ejecuta este único comando (PowerShell o Bash):")
+        print(f"  mkdir -p /home/genesis/.config/hydra/vault && cat > /home/genesis/.config/hydra/vault/secrets.enc << 'EOF'")
+        print(token_json)
+        print("  EOF")
+        print("  (o copia el bloque anterior y ejecútalo en tu VPS)")
+        print("--- Fin modo guiado ---")
+
+    # Final summary
+    print("\n" + "=" * 60)
+    print("🎉 Google OAuth completado")
+    print("   ✓ Login correcto")
+    print("   ✓ Consentimiento concedido")
+    print("   ✓ Refresh Token obtenido")
+    print("   ✓ Vault actualizado (local)")
+    if sync_attempted:
+        if sync_success:
+            print("   ✓ VPS sincronizado")
+        else:
+            print("   ⚠ VPS no sincronizado (ver mensaje anterior)")
+    else:
+        print("   ⚠ VPS no configurado para sincronización automática")
+    print("   ✓ Validación correcta")
+    print("\nHYDRA está lista para trabajar con Gmail.")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    main()

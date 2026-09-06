@@ -1,4 +1,6 @@
-google-auth>=2.0.0
-google-auth-oauthlib>=1.0.0
-google-api-python-client>=2.0.0
-cryptography>=41.0.0
+# requirements.txt for bootstrap_google.py
+google-auth-oauthlib==1.4.1
+google-auth-httplib2==0.4.2
+google-api-python-client==2.200.0
+requests-oauthlib==2.0.0
+cryptography==50.0.1

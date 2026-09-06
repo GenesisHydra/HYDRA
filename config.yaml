@@ -1,0 +1,21 @@
+model_list:
+  - model_name: free-coder
+    litellm_params:
+      model: openrouter/free
+      api_key: "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"
+  - model_name: gpt-6-astra
+    litellm_params:
+      model: openrouter/free
+      api_key: "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"
+  - model_name: gpt-4o
+    litellm_params:
+      model: openrouter/free
+      api_key: "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"
+  - model_name: gpt-4
+    litellm_params:
+      model: openrouter/free
+      api_key: "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"
+  - model_name: gpt-3.5-turbo
+    litellm_params:
+      model: openrouter/free
+      api_key: "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"
