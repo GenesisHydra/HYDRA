@@ -1,3 +1,8 @@
 config/credentials/
 token.json
 config/vault/
+config.yaml
+venv/
+.env
+vault/
+*.log

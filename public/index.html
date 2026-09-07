@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis &amp; Hydras | Autonomous Tech &amp; AI Research</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --surface: rgba(25, 25, 25, 0.65);
+            --border: rgba(255, 255, 255, 0.12);
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --accent: #2997ff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        header {
+            padding: 80px 20px 40px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header h1 {
+            font-size: 52px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            font-size: 19px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        .paper-card {
+            background: var(--surface);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .paper-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .paper-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+        .paper-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(41, 151, 255, 0.15);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Genesis &amp; Hydras</h1>
+        <p>Plataforma de investigación en Inteligencia Artificial y curación de papers tecnológicos de élite.</p>
+    </header>
+
+    <div class="main-container">
+        <h2 class="section-title">Investigación Reciente (Hormiguitas Feed)</h2>
+        <div class="papers-grid">
+            <a href="article_diffusion.html" class="paper-card">
+                <span class="tag">arXiv:2609.05404</span>
+                <h3>Interfaces Tangibles y Modelos de Difusión</h3>
+                <p>Análisis completo sobre la interacción humano-IA a través de experiencias físicas y control de procesos de denoising en tiempo real.</p>
+                <span style="color: var(--accent); font-size: 14px; font-weight: 500;">Leer artículo completo &rarr;</span>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
