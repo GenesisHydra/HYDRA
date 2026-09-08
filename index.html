@@ -1,221 +1,96 @@
-
-
-
-
 <!DOCTYPE html>
-<html lang="es" dir="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GenesisHydra - Finanzas y Tesorería</title>
-    <meta name="description" content="Transformando simulaciones en empresas reales | Automatización de reportes financieros y dashboards para PYMES">
-    <meta name="keywords" content="HYDRA, automatización, negocios, PYMES, treasury, stripe">
-    <meta name="author" content="HYDRA Business Automation Platform">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/static/img/logo-hydra.svg">
-    
-    <!-- Tailwind CSS CDN -->
+    <title>GenesisHydra // Revista de Ciencia y Tecnología de Vanguardia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #1f2937;
-            --accent: #e94a4a;
-            --light: #f9fafb;
-            --muted: #6b7280;
-        }
-    </style>
-</head>
-<body class="bg-white text-primary">
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-border">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="/" class="font-bold text-2xl tracking-wider" style="color: var(--primary);">
-                    HYDRA <span style="color: var(--accent);">Business</span>
-                </a>
-                <button class="md:hidden text-gray-700" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            <div id="mobileMenu" class="hidden md:block">
-                <a href="/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Servicios</a>
-                <a href="/quienes-somos/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Quiénes Somos</a>
-                <a href="/contacto/financial" class="ml-6 text-gray-700 hover:text var(--accent)">Contacto</a>
-                <a href="/politica-de-privacidad" class="ml-6 text-gray-700 hover:text var(--accent)">Privacy</a>
-                <a href="/terminos-y-condiciones" class="ml-6 text-gray-700 hover:text var(--accent)">Terms</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="pt-20 pb-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h1 class="text-5xl md:text-6xl font-bold tracking-tight" style="color: var(--primary);">
-                        GenesisHydra
-                    </h1>
-                    <p class="text-lg mt-4 text-gray-700 leading-relaxed">
-                        Transformando simulaciones en empresas reales
-                    </p>
-                    <div class="mt-6">
-                        <a href="/contacto/financial" 
-                           class="inline-block px-6 py-3 bg-accent text-white font-medium rounded-full hover:opacity-90 transition-opacity">
-                            Solicitar información
-                        </a>
-                        <a href="/servicios/financial" 
-                           class="inline-block mt-4 px-6 py-3 border-2 border-accent text-accent font-medium rounded-full hover:bg-accent hover:text-white transition-colors">
-                            Conocer nuestros planes
-                        </a>
-                    </div>
-                </div>
-                <div class="relative hidden lg:block">
-                    <div class="absolute -inset-2 rotate-6 opacity-5">
-                        <svg class="absolute w-full h-full fill-none mask-fill url(#hero-mask)"/>
-                        <mask id="hero-mask">
-                            <rect width="1200" height="800" fill="white"/>
-                        </mask>
-                    </div>
-                    <svg class="absolute inset-0 rotate-6 fill-[var(--primary)]">
-                        <defs>
-                            <mask id="hero-mask">
-                                <rect width="1200" height="800" fill="white"/>
-                            </mask>
-                        </defs>
-                    </svg>
-                    <div class="absolute -inset-2 rotate-6 opacity-5">
-                        <svg class="absolute w-full h-full fill-none stroke-[var(--accent)] stroke-2" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-12 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-6 text-center text-primary">Soluciones para Finanzas y Tesorería</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <div class="p-6 rounded-lg border border-gray-200 hover:bg-accent/5 hover:text-accent transition-colors">
-                    <div class="text-3xl md:text-4xl font-bold mt-2" style="color: var(--accent);">
-                        <i class="fas fa-check-circle mr-3"></i>Smart Treasury
-                    </div>
-                </div>
-                
-                <div class="p-6 rounded-lg border border-gray-200 hover:bg-accent/5 hover:text-accent transition-colors">
-                    <div class="text-3xl md:text-4xl font-bold mt-2" style="color: var(--accent);">
-                        <i class="fas fa-check-circle mr-3"></i>Cash Flow
-                    </div>
-                </div>
-                
-                <div class="p-6 rounded-lg border border-gray-200 hover:bg-accent/5 hover:text-accent transition-colors">
-                    <div class="text-3xl md:text-4xl font-bold mt-2" style="color: var(--accent);">
-                        <i class="fas fa-check-circle mr-3"></i>Reportes Automáticos
-                    </div>
-                </div>
-                
-                <div class="p-6 rounded-lg border border-gray-200 hover:bg-accent/5 hover:text-accent transition-colors">
-                    <div class="text-3xl md:text-4xl font-bold mt-2" style="color: var(--accent);">
-                        <i class="fas fa-check-circle mr-3"></i>Panel de Control
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="py-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 rounded-lg border border-gray-200 text-center">
-                    <div class="text-3xl font-bold" style="color: var(--accent);">1,000+</div>
-                    <div>PYMES automatizadas</div>
-                </div>
-                <div class="p-6 rounded-lg border border-gray-200 text-center">
-                    <div class="text-3xl font-bold" style="color: var(--accent);">98%</div>
-                    <div>Tasa de satisfacción</div>
-                </div>
-                <div class="p-6 rounded-lg border border-gray-200 text-center">
-                    <div class="text-3xl font-bold" style="color: var(--accent);">24/7</div>
-                    <div>Soporte disponible</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-12 bg-primary text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center">
-                <h2 class="text-4xl font-bold mb-4">Listo para transformar tu negocio?</h2>
-                <p class="text-lg mb-6 max-w-xl mx-auto text-gray-300">Únete a cientos de PYMES que ya automatizaron sus finanzas y operaciones</h3>
-                <a href="/contacto/financial" 
-                   class="inline-block px-8 py-4 bg-accent text-white font-medium rounded-full hover:opacity-90 transition-opacity">
-                    Contacto hoy mismo
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-50 py-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                <div>
-                    <h4 class="font-bold text-primary mb-4">HYDRA</h4>
-                    <p class="text-gray-700 text-sm">Plataforma de automatización para PYMES</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-primary text-sm">Producto</h4>
-                    <ul class="text-gray-700 text-sm">
-                        <li><a href="/servicios/financial" class="hover:text-accent">Planes y Precios</a></li>
-                        <li><a href="/quienes-somos/financial" class="hover:text-accent">Características</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-primary text-sm">Recursos</h4>
-                    <ul class="text-gray-700 text-sm">
-                        <li><a href="/blog/financial" class="hover:text-accent">Blog</a></li>
-                        <li><a href="/politica-de-privacidad" class="hover:text-accent">Privacy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-primary text-sm">Empresa</h4>
-                    <ul class="text-gray-700 text-sm">
-                        <li><a href="/quienes-somos/financial" class="hover:text-accent">Quiénes Somos</a></li>
-                        <li><a href="/terminos-y-condiciones" class="hover:text-accent">Términos</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-primary text-sm">Contacto</h4>
-                    <ul class="text-gray-700 text-sm">
-                        <li><a href="/contacto/financial" class="hover:text-accent">Contacto</a></li>
-                        <li><a href="/politica-de-cookies" class="hover:text-accent">Cookies</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-gray-200">
-                <p class="text-center text-gray-600 text-sm">© 2026 HYDRA Business Automation Platform. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('md:block');
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#050505',
+                        glassdark: 'rgba(255, 255, 255, 0.03)',
+                        glassborder: 'rgba(255, 255, 255, 0.08)',
+                    }
+                }
+            }
         }
     </script>
+    <style>
+        body { background-color: #050505; color: #f3f4f6; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-panel:hover { border-color: rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.05); }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-blue-500 selection:text-white">
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-xl font-bold tracking-wider text-white">GENESIS<span class="text-blue-400">HYDRA</span></span>
+                <span class="text-xs uppercase px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Mag</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+                <a href="#biociencias" class="hover:text-white transition">Biociencias</a>
+                <a href="#neuro" class="hover:text-white transition">Neurotecnología</a>
+                <a href="#cuantica" class="hover:text-white transition">Física Cuántica</a>
+                <a href="#ia" class="hover:text-white transition">IA y Sistemas</a>
+                <a href="#comercial" class="hover:text-white transition">Transformación</a>
+            </nav>
+            <div><a href="#productos" class="text-xs font-semibold px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Nuestros Productos</a></div>
+        </div>
+    </header>
+    <section class="relative px-6 py-24 md:py-32 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full glass-panel text-xs text-blue-400 mb-6"><span>Revista Digital de Vanguardia Científica</span></div>
+        <h1 class="text-4xl md:text-7xl font-bold tracking-tight text-white mb-6">Donde la Ciencia del Futuro <br class="hidden md:block"><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">Se Encuentra con la Realidad.</span></h1>
+        <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-10">Exploración profunda de papers universitarios, neurotecnología, computación cuántica, genoma humano y su aplicación directa en la vanguardia tecnológica y comercial.</p>
+    </section>
+    <main class="max-w-7xl mx-auto px-6 pb-24 space-y-16">
+        <section id="biociencias" class="glass-panel rounded-3xl p-8 md:p-12">
+            <div class="flex items-center space-x-3 mb-6"><span class="text-2xl">🧬</span><h2 class="text-2xl md:text-3xl font-bold text-white">Biociencias y Genoma (Ciencia y Medicina)</h2></div>
+            <p class="text-gray-400 mb-8">Investigaciones de frontera sobre edición genética, secuenciación avanzada y terapia génica aplicada.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Paper Destacado</span><h3 class="text-lg font-bold text-white mt-2 mb-3">CRISPR-Cas9 de Alta Presión: Corrección Epigenética in vivo</h3><p class="text-sm text-gray-400 mb-4">Análisis exhaustivo sobre la estabilidad de vectores virales modificados para la supresión de mutaciones monogénicas.</p><span class="text-xs text-gray-500">Universidad de Stanford // Dept. Genómica</span></div>
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Estudio Clínico</span><h3 class="text-lg font-bold text-white mt-2 mb-3">Senescencia Celular y Biomarcadores de Longevidad</h3><p class="text-sm text-gray-400 mb-4">Revisión de ensayos clínicos moleculares enfocados en la reversión parcial de la edad biológica tisular.</p><span class="text-xs text-gray-500">MIT Biotechnology Lab</span></div>
+            </div>
+        </section>
+        <section id="neuro" class="glass-panel rounded-3xl p-8 md:p-12">
+            <div class="flex items-center space-x-3 mb-6"><span class="text-2xl">🧠</span><h2 class="text-2xl md:text-3xl font-bold text-white">Neurotecnología y Ciencia Cognitiva</h2></div>
+            <p class="text-gray-400 mb-8">Interfaces cerebro-computadora (BCI), conectómica y mapeo de redes sinápticas avanzadas.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Avance Tecnológico</span><h3 class="text-lg font-bold text-white mt-2 mb-3">Interfaces BCI de Alta Densidad y Avances de Neuralink</h3><p class="text-sm text-gray-400 mb-4">Evaluación técnica de los hilos ultrafinos y la tasa de transmisión de datos neuronales en sujetos humanos.</p><span class="text-xs text-gray-500">Journal of Neural Engineering</span></div>
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Investigación</span><h3 class="text-lg font-bold text-white mt-2 mb-3">Conectómica Humana: Mapeo Topológico del Neocórtex</h3><p class="text-sm text-gray-400 mb-4">Simulaciones de alta resolución de vías axonales mediante microscopía electrónica.</p><span class="text-xs text-gray-500">Max Planck Institute</span></div>
+            </div>
+        </section>
+        <section id="cuantica" class="glass-panel rounded-3xl p-8 md:p-12">
+            <div class="flex items-center space-x-3 mb-6"><span class="text-2xl">⚛️</span><h2 class="text-2xl md:text-3xl font-bold text-white">Física Avanzada y Computación Cuántica</h2></div>
+            <p class="text-gray-400 mb-8">Qubits superconductores, supremacía cuántica y su impacto en la seguridad de la información.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Whitepaper</span><h3 class="text-lg font-bold text-white mt-2 mb-3">Corrección de Errores en Qubits Lógicos Superconductores</h3><p class="text-sm text-gray-400 mb-4">Estrategias de tolerancia a fallos mediante códigos de superficie en procesadores avanzados.</p><span class="text-xs text-gray-500">Quantum Information Science Review</span></div>
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Estudio Teórico</span><h3 class="text-lg font-bold text-white mt-2 mb-3">Criptografía Post-Cuántica: Algoritmos Resistentes</h3><p class="text-sm text-gray-400 mb-4">Evaluación de estándares de encriptación frente a la computación cuántica comercial.</p><span class="text-xs text-gray-500">CERN / Theoretical Physics Dept.</span></div>
+            </div>
+        </section>
+        <section id="ia" class="glass-panel rounded-3xl p-8 md:p-12">
+            <div class="flex items-center space-x-3 mb-6"><span class="text-2xl">🤖</span><h2 class="text-2xl md:text-3xl font-bold text-white">Inteligencia Artificial y Sistemas Autónomos</h2></div>
+            <p class="text-gray-400 mb-8">Modelos de razonamiento profundo, arquitecturas de agentes autónomos y computación de alto rendimiento.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Paper Académico</span><h3 class="text-lg font-bold text-white mt-2 mb-3">Razonamiento Multi-Agente en Entornos Dinámicos</h3><p class="text-sm text-gray-400 mb-4">Arquitecturas cognitivas basadas en modelos de lenguaje con memoria persistente.</p><span class="text-xs text-gray-500">AI Research Labs</span></div>
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Artículo Técnico</span><h3 class="text-lg font-bold text-white mt-2 mb-3">Eficiencia Energética en Modelos de Lenguaje</h3><p class="text-sm text-gray-400 mb-4">Optimización de pesos mediante cuantización de baja precisión.</p><span class="text-xs text-gray-500">DeepTech Computing Group</span></div>
+            </div>
+        </section>
+        <section id="comercial" class="glass-panel rounded-3xl p-8 md:p-12">
+            <div class="flex items-center space-x-3 mb-6"><span class="text-2xl">🏢</span><h2 class="text-2xl md:text-3xl font-bold text-white">Transformación Comercial y Aplicación Tecnológica</h2></div>
+            <p class="text-gray-400 mb-8">El puente estratégico entre la investigación científica y su despliegue comercial.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-panel rounded-2xl p-6"><span class="text-xs text-blue-400 font-semibold uppercase">Estrategia</span><h3 class="text-lg font-bold text-white mt-2 mb-3">De la Investigación al Mercado: Commercial DeepTech</h3><p class="text-sm text-gray-400 mb-4">Marcos de trabajo para la transferencia tecnológica efectiva desde laboratorios universitarios.</p><span class="text-xs text-gray-500">Enterprise Technology Division</span></div>
+                <div class="glass-panel rounded-2xl p-6" id="productos"><span class="text-xs text-blue-400 font-semibold uppercase">Nuestros Productos</span><h3 class="text-lg font-bold text-white mt-2 mb-3">GenesisHydra Engine & Ecosystem</h3><p class="text-sm text-gray-400 mb-4">Plataformas modulares y herramientas propietarias orientadas a la automatización corporativa.</p><span class="text-xs text-gray-500">GenesisHydra Core</span></div>
+            </div>
+        </section>
+    </main>
+    <footer class="glass-panel border-t border-white/10 py-12 px-6 text-center text-sm text-gray-500">
+        <p>© 2026 GenesisHydra. Revista Digital de Ciencia y Tecnología de Vanguardia. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
