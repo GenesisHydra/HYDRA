@@ -6,3 +6,11 @@ venv/
 .env
 vault/
 *.log
+
+# Credenciales y configuraciones sensibles
+.env
+litellm.log
+credentials.json
+*config.json
+*.sqlite
+*.db
