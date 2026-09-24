@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Genesis" color="#00FFCC">
+  <title>Genesis</title>
+  <path fill="currentColor" d="M36 64a28 28 0 1 1 56 0a28 28 0 1 1 -56 0ZM52 64a12 12 0 1 0 24 0a12 12 0 1 0 -24 0Z"/>
+  <path fill="currentColor" d="M84 72L104 72L104 56L84 56Z"/>
+  <path fill="currentColor" d="M100 64a12 12 0 1 1 24 0a12 12 0 1 1 -24 0Z"/>
+  <path fill="currentColor" d="M67.07 85.32L77.07 102.64L90.93 94.64L80.93 77.32Z"/>
+  <path fill="currentColor" d="M76 105.57a12 12 0 1 1 24 0a12 12 0 1 1 -24 0Z"/>
+  <path fill="currentColor" d="M47.07 77.32L37.07 94.64L50.93 102.64L60.93 85.32Z"/>
+  <path fill="currentColor" d="M28 105.57a12 12 0 1 1 24 0a12 12 0 1 1 -24 0Z"/>
+  <path fill="currentColor" d="M44 56L24 56L24 72L44 72Z"/>
+  <path fill="currentColor" d="M4 64a12 12 0 1 1 24 0a12 12 0 1 1 -24 0Z"/>
+  <path fill="currentColor" d="M60.93 42.68L50.93 25.36L37.07 33.36L47.07 50.68Z"/>
+  <path fill="currentColor" d="M28 22.43a12 12 0 1 1 24 0a12 12 0 1 1 -24 0Z"/>
+  <path fill="currentColor" d="M80.93 50.68L90.93 33.36L77.07 25.36L67.07 42.68Z"/>
+  <path fill="currentColor" d="M76 22.43a12 12 0 1 1 24 0a12 12 0 1 1 -24 0Z"/>
+</svg>

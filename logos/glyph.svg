@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Genesis" color="#00FFCC">
+  <title>Genesis</title>
+  <path fill="currentColor" d="M38 64a26 26 0 1 1 52 0a26 26 0 1 1 -52 0ZM51 64a13 13 0 1 0 26 0a13 13 0 1 0 -26 0Z"/>
+  <path fill="currentColor" d="M84 69L106 69L106 59L84 59Z"/>
+  <path fill="currentColor" d="M105 64a9 9 0 1 1 18 0a9 9 0 1 1 -18 0Z"/>
+  <path fill="currentColor" d="M94.08 65.61L103.73 77.1A2.5 2.5 0 0 1 107.56 73.88L97.92 62.39Z"/>
+  <path fill="currentColor" d="M97.92 65.61L107.56 54.12A2.5 2.5 0 0 1 103.73 50.9L94.08 62.39Z"/>
+  <path fill="currentColor" d="M69.67 83.82L80.67 102.87L89.33 97.87L78.33 78.82Z"/>
+  <path fill="currentColor" d="M80 107.3a9 9 0 1 1 18 0a9 9 0 1 1 -18 0Z"/>
+  <path fill="currentColor" d="M77.65 90.86L72.52 104.95A2.5 2.5 0 0 1 77.22 106.66L82.35 92.57Z"/>
+  <path fill="currentColor" d="M79.57 94.17L94.34 96.78A2.5 2.5 0 0 1 95.21 91.86L80.43 89.25Z"/>
+  <path fill="currentColor" d="M49.67 78.82L38.67 97.87L47.33 102.87L58.33 83.82Z"/>
+  <path fill="currentColor" d="M30 107.3a9 9 0 1 1 18 0a9 9 0 1 1 -18 0Z"/>
+  <path fill="currentColor" d="M47.57 89.25L32.79 91.86A2.5 2.5 0 0 1 33.66 96.78L48.43 94.17Z"/>
+  <path fill="currentColor" d="M45.65 92.57L50.78 106.66A2.5 2.5 0 0 1 55.48 104.95L50.35 90.86Z"/>
+  <path fill="currentColor" d="M44 59L22 59L22 69L44 69Z"/>
+  <path fill="currentColor" d="M5 64a9 9 0 1 1 18 0a9 9 0 1 1 -18 0Z"/>
+  <path fill="currentColor" d="M33.92 62.39L24.27 50.9A2.5 2.5 0 0 1 20.44 54.12L30.08 65.61Z"/>
+  <path fill="currentColor" d="M30.08 62.39L20.44 73.88A2.5 2.5 0 0 1 24.27 77.1L33.92 65.61Z"/>
+  <path fill="currentColor" d="M58.33 44.18L47.33 25.13L38.67 30.13L49.67 49.18Z"/>
+  <path fill="currentColor" d="M30 20.7a9 9 0 1 1 18 0a9 9 0 1 1 -18 0Z"/>
+  <path fill="currentColor" d="M50.35 37.14L55.48 23.05A2.5 2.5 0 0 1 50.78 21.34L45.65 35.43Z"/>
+  <path fill="currentColor" d="M48.43 33.83L33.66 31.22A2.5 2.5 0 0 1 32.79 36.14L47.57 38.75Z"/>
+  <path fill="currentColor" d="M78.33 49.18L89.33 30.13L80.67 25.13L69.67 44.18Z"/>
+  <path fill="currentColor" d="M80 20.7a9 9 0 1 1 18 0a9 9 0 1 1 -18 0Z"/>
+  <path fill="currentColor" d="M80.43 38.75L95.21 36.14A2.5 2.5 0 0 1 94.34 31.22L79.57 33.83Z"/>
+  <path fill="currentColor" d="M82.35 35.43L77.22 21.34A2.5 2.5 0 0 1 72.52 23.05L77.65 37.14Z"/>
+</svg>
